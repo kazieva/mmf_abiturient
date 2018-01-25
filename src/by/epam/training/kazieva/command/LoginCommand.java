@@ -3,7 +3,6 @@ package by.epam.training.kazieva.command;
 import by.epam.training.kazieva.dao.UserDAO;
 import by.epam.training.kazieva.entity.User;
 import static by.epam.training.kazieva.command.URLConstant.*;
-
 import javax.servlet.http.HttpServletRequest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,6 +21,7 @@ public class LoginCommand implements ActionCommand {
         String login = request.getParameter(PARAM_NAME_LOGIN);
         String password = request.getParameter(PARAM_NAME_PASSWORD);
         String key = request.getParameter(PARAM_NAME_KEY);
+
         ResultSet result= UserDAO.findUser(login, password, key);
         try {
             if (result.next()) {
