@@ -20,7 +20,6 @@ public class RegistrationCommand implements ActionCommand {
     private static final String PARAM_NAME_ROLE = "user";
     @Override
     public String execute(HttpServletRequest request) {
-
         return null;
     }
 
