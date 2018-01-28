@@ -1,6 +1,7 @@
 package by.epam.training.kazieva.logic;
 
 import by.epam.training.kazieva.dao.AbiturientDAO;
+import by.epam.training.kazieva.dao.AbstractDAO;
 import by.epam.training.kazieva.entity.Abiturient;
 
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import java.util.List;
 public class AbiturientLogic {
     public static List <Abiturient> findAllAbiturient(){
         ResultSet resultAbiturient= AbiturientDAO.findAllAbituriebt();
-        List<Abiturient > resultAbiturientsList = new ArrayList<>();
+        List<Abiturient> resultAbiturientsList = new ArrayList<>();
         try {
             if (resultAbiturient.next()) {
                 try {
@@ -24,11 +25,10 @@ public class AbiturientLogic {
                         res.setSname(resultAbiturient.getString("sname"));
                         res.setPatronymic(resultAbiturient.getString("patronymic"));
                         res.setPhone(resultAbiturient.getString("phone"));
-                        res.setBirthday(resultAbiturient.getDate("birthday"));
                         res.setSchool_certificate(resultAbiturient.getByte("school_certificate"));
                         res.setMath_certificate(resultAbiturient.getByte("math_certificate"));
                         res.setPhysics_certificate(resultAbiturient.getByte("physics_certificate"));
-                        res.setLanguage__certificate(resultAbiturient.getByte("language__certificate"));
+                        res.setLanguage_certificate(resultAbiturient.getByte("language_certificate"));
 
                         resultAbiturientsList.add(res);
                     }while (resultAbiturient.next());
@@ -41,5 +41,8 @@ public class AbiturientLogic {
             e.printStackTrace();
         }
         return resultAbiturientsList;
+    }
+    public static void addAbiturient(Abiturient abiturient){
+        AbiturientDAO.addAbiturient(abiturient);
     }
 }

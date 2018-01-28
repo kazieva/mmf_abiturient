@@ -16,7 +16,7 @@ public class ResultComand implements ActionCommand {
     String page = null;
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
-        List<Abiturient > resultAbiturientsList = AbiturientLogic.findAllAbiturient();
+        List<Abiturient> resultAbiturientsList = AbiturientLogic.findAllAbiturient();
         if (resultAbiturientsList.size()!=0) {
             request.setAttribute("abiturients", resultAbiturientsList);
             System.out.println(resultAbiturientsList);

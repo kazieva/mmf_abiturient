@@ -28,35 +28,34 @@
     <h2 class="h"> Заполнить заявку</h2>
     <div class="inputForm">
         <form method="POST" action="controller">
-            <input type="hidden" name="command" value="add_abiturient"/>
+            <input type="hidden" name="command" value="add"/>
             <br>
             <p>
-                <input type="text" placeholder="Серия паспорта"/>
-                <input type="number" placeholder="Номер паспорта"/>
+                <input type="text" name="passport_series" placeholder="Серия паспорта"/>
+                <input type="number" name="passport_id" placeholder="Номер паспорта"/>
             </p>
             <p>
-                <input type="text" placeholder="Имя"/>
-                <input type="text" placeholder="Фамилия"/>
-                <input type="text" placeholder="Отчество"/>
+                <input type="text" name="fname" placeholder="Имя"/>
+                <input type="text" name="sname" placeholder="Фамилия"/>
+                <input type="text" name="patronymic" placeholder="Отчество"/>
             </p>
             <p>
-                <input name="phone" type="text" placeholder="Телефон"/>
-                <input name="birthday" type="date" placeholder="Дата рождения"/>
+                <input name="phone" name="phone" type="text" placeholder="Телефон"/>
             </p>
             <p>
-                <select required>
+                <select  name="speciality">
                     <c:forEach items="${requestScope.specialities}" var="speciality">
                         <option>${speciality.speciality_name}</option>
                     </c:forEach>
                 </select>
             </p>
             <p>
-                <input type="number" min = "15" max="100" size="5" required placeholder="балл по математике">
-                <input type="number" min = "15" max="100" size="5" required placeholder="балл по физике">
-                <input type="number" min = "20" max="100" size="5" required placeholder="балл по языку">
-                <input type="number" min = "0" max="100" size="5" required placeholder="балл аттестата">
+                <input type="number" min = "15" max="100" size="5" name="math_certificate" required placeholder="балл по математике">
+                <input type="number" min = "15" max="100" size="5" name="physics_certificate" required placeholder="балл по физике">
+                <input type="number" min = "20" max="100" size="5" name="language_certificate" required placeholder="балл по языку">
+                <input type="number" min = "0" max="100" size="5" name="school_certificate" required placeholder="балл аттестата">
             </p>
-            <input type="button" id="submit_button" onclick="return validateForm()" value="Оформить" />
+            <input type="submit" value="Оформить" />
         </form>
     </div>
     <hr>
@@ -75,7 +74,7 @@
                    <td>  </td>
                 </tr>
                 <c:forEach items="${requestScope.abiturients}" var="abiturient">
-                    <tr><td>${abiturient.math_certificate+abiturient.physics_certificate+abiturient.language__certificate+abiturient.school_certificate}</td>
+                    <tr><td>${abiturient.math_certificate+abiturient.physics_certificate+abiturient.language_certificate+abiturient.school_certificate}</td>
                         <td>${abiturient.speciality_id}</td>
                         <td>${abiturient.sname}</td>
                         <td>${abiturient.fname}</td>

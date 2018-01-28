@@ -28,4 +28,21 @@ public class SpecialityDAO extends AbstractDAO {
         }
         return result;
     }
+    public static ResultSet getSpecialityId(String specialityName) {
+        // с пулом
+        ConnectionPool pool = ConnectionPool.getInstance();
+        WrapperConnection connection = null;
+        PreparedStatement statement = null;
+        ResultSet result = null;
+        String query = "SELECT speciality_id FROM speciality_translate WHERE speciality_name = \""+specialityName+"\";";
+        try{
+            connection = pool.getConnection();
+            statement = getPreparedStatement(connection, query);
+            result = statement.executeQuery();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

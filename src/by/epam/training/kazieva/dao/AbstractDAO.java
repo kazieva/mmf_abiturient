@@ -1,6 +1,7 @@
 package by.epam.training.kazieva.dao;
 
 import by.epam.training.kazieva.connect.WrapperConnection;
+import by.epam.training.kazieva.entity.Abiturient;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -26,4 +27,5 @@ public abstract class AbstractDAO  {
        //     LOGGER.error("Impossible close statement\n" + e);
         }
     }
+
 }

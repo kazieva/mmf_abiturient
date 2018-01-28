@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-//@WebServlet(name = "controller", urlPatterns = "/controller")
 @WebServlet("/")
 public class Controller extends HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
@@ -31,9 +30,17 @@ public class Controller extends HttpServlet {
         } catch (SQLException|ClassNotFoundException e) {
             e.printStackTrace();
         }
+        String action = request.getParameter("command");
+
         if (page != null) {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
-            dispatcher.forward(request, response);
+            if ("add".equals(action)||"login".equals(action)){
+                System.out.println("sendred");
+                response.sendRedirect("Controller?command=result");
+            }
+            else {
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
+                dispatcher.forward(request, response);
+            }
         }
     }
 }

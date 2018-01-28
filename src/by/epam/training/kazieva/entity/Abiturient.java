@@ -9,28 +9,26 @@ public class Abiturient {
     private String sname;
     private String patronymic;
     private String phone;
-    private Date birthday;
     private byte school_certificate;
     private byte math_certificate;
     private byte physics_certificate;
-    private byte language__certificate;
+    private byte language_certificate;
     private int speciality_id;
 
     public Abiturient() {
     }
 
-    public Abiturient(String passport_series, int passport_id, String fname, String sname, String patronymic, String phone, Date birthday, byte school_certificate, byte math_certificate, byte physics_certificate, byte language__certificate, int speciality_id) {
+    public Abiturient(String passport_series, int passport_id, String fname, String sname, String patronymic, String phone, Date birthday, byte school_certificate, byte math_certificate, byte physics_certificate, byte language_certificate, int speciality_id) {
         this.passport_series = passport_series;
         this.passport_id = passport_id;
         this.fname = fname;
         this.sname = sname;
         this.patronymic = patronymic;
         this.phone = phone;
-        this.birthday = birthday;
         this.school_certificate = school_certificate;
         this.math_certificate = math_certificate;
         this.physics_certificate = physics_certificate;
-        this.language__certificate = language__certificate;
+        this.language_certificate = language_certificate;
         this.speciality_id = speciality_id;
     }
 
@@ -82,14 +80,6 @@ public class Abiturient {
         this.phone = phone;
     }
 
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
     public byte getSchool_certificate() {
         return school_certificate;
     }
@@ -114,12 +104,12 @@ public class Abiturient {
         this.physics_certificate = physics_certificate;
     }
 
-    public byte getLanguage__certificate() {
-        return language__certificate;
+    public byte getLanguage_certificate() {
+        return language_certificate;
     }
 
-    public void setLanguage__certificate(byte language__certificate) {
-        this.language__certificate = language__certificate;
+    public void setLanguage_certificate(byte language_certificate) {
+        this.language_certificate = language_certificate;
     }
 
     public int getSpeciality_id() {
@@ -139,11 +129,10 @@ public class Abiturient {
                 ", sname='" + sname + '\'' +
                 ", patronymic='" + patronymic + '\'' +
                 ", phone='" + phone + '\'' +
-                ", birthday=" + birthday +
                 ", school_certificate=" + school_certificate +
                 ", math_certificate=" + math_certificate +
                 ", physics_certificate=" + physics_certificate +
-                ", language__certificate=" + language__certificate +
+                ", language_certificate=" + language_certificate +
                 ", speciality_id=" + speciality_id +
                 '}';
     }
@@ -160,8 +149,7 @@ public class Abiturient {
         if (!fname.equals(that.fname)) return false;
         if (!sname.equals(that.sname)) return false;
         if (patronymic != null ? !patronymic.equals(that.patronymic) : that.patronymic != null) return false;
-        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
-        return birthday.equals(that.birthday);
+        return phone != null ? phone.equals(that.phone) : that.phone == null;
     }
 
     @Override
@@ -172,7 +160,6 @@ public class Abiturient {
         result = 31 * result + sname.hashCode();
         result = 31 * result + (patronymic != null ? patronymic.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        result = 31 * result + birthday.hashCode();
         return result;
     }
 }

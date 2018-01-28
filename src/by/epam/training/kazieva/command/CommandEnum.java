@@ -22,9 +22,9 @@ public enum CommandEnum {
             this.command= new ResultComand();
         }
     },
-    ADD_ABITURIENT{
+    ADD{
         {
-            this.command= new AddAbiturientCommand();
+            this.command= new AddCommand();
         }
     };
     ActionCommand command;

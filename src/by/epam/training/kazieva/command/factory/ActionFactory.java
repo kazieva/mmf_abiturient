@@ -11,8 +11,10 @@ public class ActionFactory {
         ActionCommand current = new EmptyCommand();
         // извлечение имени команды из запроса
         String action = request.getParameter("command");
+        System.out.println(action);
         if (action == null || action.isEmpty()) {
             // если команда не задана в текущем запросе
+            System.out.println("команда не задана");
             return current;
         }
         // получение объекта, соответствующего команде
