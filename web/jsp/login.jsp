@@ -18,6 +18,11 @@
         <input type="submit" value="Log in"/>
     </form>
 
+    <form method="POST" action="controller">
+        <input type="hidden" name="command" value="result" />
+        <input type="submit" value="Result"/>
+    </form>
+
 
 </body>
 </html>

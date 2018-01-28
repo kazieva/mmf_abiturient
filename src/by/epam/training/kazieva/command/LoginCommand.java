@@ -1,7 +1,13 @@
 package by.epam.training.kazieva.command;
 
+import by.epam.training.kazieva.dao.AbiturientDAO;
 import by.epam.training.kazieva.dao.UserDAO;
+import by.epam.training.kazieva.entity.Abiturient;
+import by.epam.training.kazieva.entity.Speciality;
 import by.epam.training.kazieva.entity.User;
+import by.epam.training.kazieva.logic.AbiturientLogic;
+import by.epam.training.kazieva.logic.SpecialityLogic;
+
 import static by.epam.training.kazieva.command.URLConstant.*;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.ResultSet;
@@ -44,6 +50,15 @@ public class LoginCommand implements ActionCommand {
                 request.setAttribute("users", resList);
                 System.out.println(resList);
                 page=PATH_PAGE_MAIN;
+
+                List<Abiturient > resultAbiturientsList = AbiturientLogic.findAllAbiturient();
+                request.setAttribute("abiturients", resultAbiturientsList);
+                System.out.println(resultAbiturientsList);
+
+
+                List<Speciality> resultSpecialityList = SpecialityLogic.findAllSpeciality();
+                request.setAttribute("specialities", resultSpecialityList);
+
             } else {
 
                 request.setAttribute("errorLoginPassMessage","Incorrect login or password.");

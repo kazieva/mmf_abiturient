@@ -16,6 +16,16 @@ public enum CommandEnum {
             this.command = new RegistrationCommand();
         }
 
+    },
+    RESULT{
+        {
+            this.command= new ResultComand();
+        }
+    },
+    ADD_ABITURIENT{
+        {
+            this.command= new AddAbiturientCommand();
+        }
     };
     ActionCommand command;
 
