@@ -41,6 +41,31 @@ public enum CommandEnum {
         {
             this.command = new UpdateAbiturientCommand();
         }
+    },
+    RESULT_SPECIALITY{
+        {
+            this.command= new ResultSpecialityComand();
+        }
+    },
+    ADD_SPECIALITY{
+        {
+            this.command= new AddSpecialityCommand();
+        }
+    },
+    DELETE_SPECIALITY{
+        {
+            this.command=new DeleteSpecialityCommand();
+        }
+    },
+    EDIT_SPECIALITY{
+        {
+            this.command = new EditAbiturientCommand();
+        }
+    },
+    UPDATE_SPECIALITYSX{
+        {
+            this.command = new UpdateAbiturientCommand();
+        }
     };
     ActionCommand command;
 

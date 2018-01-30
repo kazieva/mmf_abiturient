@@ -48,4 +48,7 @@ public class SpecialityLogic {
         System.out.println(specialityId);
         return specialityId;
     }
+    public static void deleteSpecialityById(int id){
+        SpecialityDAO.deleteSpeciality(id);
+    }
 }

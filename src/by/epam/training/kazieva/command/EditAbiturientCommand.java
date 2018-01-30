@@ -20,7 +20,7 @@ public class EditAbiturientCommand implements ActionCommand{
         int passport_id=Integer.parseInt(request.getParameter(PARAM_NAME_PASSPORT_ID));
         Abiturient abiturient = AbiturientLogic.getAfituruent(passport_series, passport_id);
         if (abiturient!=null){
-            page=PATH_EDIT_PAGE;
+            page=PATH_EDIT_ABITURIENT_PAGE;
         }
         request.setAttribute("abiturient", abiturient);
         List<Speciality> resultSpecialityList = SpecialityLogic.findAllSpeciality();

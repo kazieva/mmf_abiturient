@@ -22,6 +22,9 @@
         <input type="hidden" name="command" value="result" />
         <input type="submit" value="Result"/>
     </form>
+    <a href="Controller?command=result_speciality">
+        Specialities
+    </a>
 
 
 </body>

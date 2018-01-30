@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import static java.lang.Byte.parseByte;
 import static java.lang.Integer.parseInt;
 
-public class AddAbiturientCommand implements ActionCommand, ParamConstant {
+public class AddAbiturientCommand implements ActionCommand {
     String page=null;
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {

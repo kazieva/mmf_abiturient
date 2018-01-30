@@ -31,10 +31,13 @@ public class Controller extends HttpServlet {
             e.printStackTrace();
         }
         String action = request.getParameter("command");
-
+        System.out.println(action);
         if (page != null) {
             if ("add_abiturient".equals(action)||"delete_abiturient".equals(action)||"update_abiturient".equals(action)){
                 response.sendRedirect("Controller?command=result");
+            }
+            if("delete_speciality".equals(action)){
+                response.sendRedirect("Controller?command=result_speciality");
             }
             else {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);

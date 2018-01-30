@@ -29,4 +29,5 @@ interface ParamConstant {
     public static final String PARAM_NAME_NEW_PHYSICS_CERTIFICATE = "new_physics_certificate";
     public static final String PARAM_NAME_NEW_LANGUAGE_CERTIFICATE = "new_language_certificate";
     public static final String PARAM_NAME_NEW_SPECIALITY = "new_speciality";
+    public static final String PARAM_NAME_SPECIALITY_ID = "id";
 }

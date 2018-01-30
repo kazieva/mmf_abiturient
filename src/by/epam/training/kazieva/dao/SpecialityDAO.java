@@ -45,4 +45,19 @@ public class SpecialityDAO extends AbstractDAO {
         }
         return result;
     }
+
+    public static void deleteSpeciality(int id){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        String query="DELETE speciality_translate, speciality FROM speciality_translate LEFT JOIN speciality " +
+                "ON speciality.id=speciality_translate.speciality_id " +
+                "WHERE speciality.id="+id+";";
+        try{
+            WrapperConnection connection = pool.getConnection();
+            PreparedStatement statement = getPreparedStatement(connection, query);
+            statement.executeUpdate();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
