@@ -14,7 +14,7 @@ import static by.epam.training.kazieva.command.URLConstant.PATH_PAGE_MAIN;
 import static java.lang.Byte.parseByte;
 import static java.lang.Integer.parseInt;
 
-public class AddCommand implements ActionCommand {
+public class AddAbiturientCommand implements ActionCommand {
     private static final String PARAM_NAME_PASSPORT_SERIES = "passport_series";
     private static final String PARAM_NAME_PASSPORT_ID = "passport_id";
     private static final String PARAM_NAME_FNAME = "fname";

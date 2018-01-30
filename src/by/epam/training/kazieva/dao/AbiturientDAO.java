@@ -44,4 +44,21 @@ public class AbiturientDAO extends AbstractDAO{
             e.printStackTrace();
         }
     }
+    public static void deleteAbiturient(String passport_series, int passport_id){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        WrapperConnection connection = null;
+        PreparedStatement statement = null;
+//        ResultSet result = null;
+        String query="DELETE FROM abiturient WHERE passport_series=\""+passport_series+"\" AND passport_id="+passport_id+";";
+        System.out.println(query);
+        try{
+            connection = pool.getConnection();
+            statement = getPreparedStatement(connection, query);
+            statement.executeUpdate();
+            //       result = statement.executeQuery();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

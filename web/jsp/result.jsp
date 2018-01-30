@@ -28,7 +28,7 @@
     <h2 class="h"> Заполнить заявку</h2>
     <div class="inputForm">
         <form method="POST" action="controller">
-            <input type="hidden" name="command" value="add"/>
+            <input type="hidden" name="command" value="add_abiturient"/>
             <br>
             <p>
                 <input type="text" name="passport_series" placeholder="Серия паспорта"/>
@@ -82,7 +82,7 @@
                         <td>${abiturient.passport_id}</td>
                         <td>${abiturient.phone}</td>
 
-                        <td><a href="delete?passport_id=${abiturient.passport_id}&passport_series=${abiturient.passport_series}">
+                        <td><a href="Controller?command=delete_abiturient&passport_id=${abiturient.passport_id}&passport_series=${abiturient.passport_series}">
                             X
                         </a> </td>
                     </tr>

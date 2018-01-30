@@ -43,6 +43,12 @@ public class AbiturientLogic {
         return resultAbiturientsList;
     }
     public static void addAbiturient(Abiturient abiturient){
+
         AbiturientDAO.addAbiturient(abiturient);
+    }
+    public  static void  deleteAbiturient(String passport_series, int passport_id){
+        System.out.println(passport_series+" "+ passport_id);
+        AbiturientDAO.deleteAbiturient(passport_series, passport_id);
+
     }
 }
