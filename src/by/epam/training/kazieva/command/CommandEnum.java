@@ -31,6 +31,16 @@ public enum CommandEnum {
         {
             this.command=new DeleteAbiturientCommand();
         }
+    },
+    EDIT_ABITURIENT{
+        {
+            this.command = new EditAbiturientCommand();
+        }
+    },
+    UPDATE_ABITURIENT{
+        {
+            this.command = new UpdateAbiturientCommand();
+        }
     };
     ActionCommand command;
 

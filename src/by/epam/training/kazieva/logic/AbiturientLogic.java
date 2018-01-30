@@ -51,4 +51,32 @@ public class AbiturientLogic {
         AbiturientDAO.deleteAbiturient(passport_series, passport_id);
 
     }
+    public  static Abiturient getAfituruent(String passport_series, int passport_id){
+        ResultSet resultAbiturient = AbiturientDAO.getAbiturient(passport_series,  passport_id);
+        Abiturient abiturient=null;
+
+        try {
+            if (resultAbiturient.next()) {
+                abiturient = new Abiturient();
+                abiturient.setSpeciality_id(resultAbiturient.getInt("speciality_id"));
+                abiturient.setPassport_id(resultAbiturient.getInt("passport_id"));
+                abiturient.setPassport_series(resultAbiturient.getString("passport_series"));
+                abiturient.setFname(resultAbiturient.getString("fname"));
+                abiturient.setSname(resultAbiturient.getString("sname"));
+                abiturient.setPatronymic(resultAbiturient.getString("patronymic"));
+                abiturient.setPhone(resultAbiturient.getString("phone"));
+                abiturient.setSchool_certificate(resultAbiturient.getByte("school_certificate"));
+                abiturient.setMath_certificate(resultAbiturient.getByte("math_certificate"));
+                abiturient.setPhysics_certificate(resultAbiturient.getByte("physics_certificate"));
+                abiturient.setLanguage_certificate(resultAbiturient.getByte("language_certificate"));
+                System.out.println(resultAbiturient);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return abiturient;
+    }
+    public static void updateAbiturient(Abiturient abiturient, String old_passport_series, int old_passport_id){
+        AbiturientDAO.updateAbiturient(abiturient, old_passport_series, old_passport_id);
+    }
 }

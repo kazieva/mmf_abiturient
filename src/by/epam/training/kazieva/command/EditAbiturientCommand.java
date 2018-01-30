@@ -9,23 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.List;
 
+public class EditAbiturientCommand implements ActionCommand{
 
-public class ResultComand implements ActionCommand {
-    String page = null;
+    private static final String PARAM_NAME_PASSPORT_SERIES = "passport_series";
+    private static final String PARAM_NAME_PASSPORT_ID = "passport_id";
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
-        List<Abiturient> resultAbiturientsList = AbiturientLogic.findAllAbiturient();
-        if (resultAbiturientsList.size()!=0) {
-            request.setAttribute("abiturients", resultAbiturientsList);
-            System.out.println(resultAbiturientsList);
-            page=PATH_PAGE_MAIN;
-        } else {
-            request.setAttribute("errorLoginPassMessage","Incorrect login or password.");
-            page = PATH_PAGE_LOGIN;
+        String page = null;
+        String passport_series = request.getParameter(PARAM_NAME_PASSPORT_SERIES);
+        int passport_id=Integer.parseInt(request.getParameter(PARAM_NAME_PASSPORT_ID));
+        Abiturient abiturient = AbiturientLogic.getAfituruent(passport_series, passport_id);
+        if (abiturient!=null){
+            page=PATH_EDIT_PAGE;
         }
+        request.setAttribute("abiturient", abiturient);
         List<Speciality> resultSpecialityList = SpecialityLogic.findAllSpeciality();
         request.setAttribute("specialities", resultSpecialityList);
-        System.out.println(resultSpecialityList);
 
         return page;
     }

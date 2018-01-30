@@ -15,7 +15,6 @@
             <td>Имя</td>
             <td>Фамилия</td>
         </tr>
-        <c:forEach items="${requestScope.users}" var="user">
         <tr>
              <td>${user.login}</td>
              <td>${user.password}</td>
@@ -23,7 +22,6 @@
              <td>${user.fname}</td>
              <td>${user.sname}</td>
         </tr>
-        </c:forEach>
     </table>
     <h2 class="h"> Заполнить заявку</h2>
     <div class="inputForm">
@@ -72,6 +70,7 @@
                 <td>Номер паспорта</td>
                 <td>телефон</td>
                    <td>  </td>
+                <td>  </td>
                 </tr>
                 <c:forEach items="${requestScope.abiturients}" var="abiturient">
                     <tr><td>${abiturient.math_certificate+abiturient.physics_certificate+abiturient.language_certificate+abiturient.school_certificate}</td>
@@ -81,10 +80,16 @@
                         <td>${abiturient.passport_series}</td>
                         <td>${abiturient.passport_id}</td>
                         <td>${abiturient.phone}</td>
-
-                        <td><a href="Controller?command=delete_abiturient&passport_id=${abiturient.passport_id}&passport_series=${abiturient.passport_series}">
+                        <td>
+                            <a href="Controller?command=edit_abiturient&passport_id=${abiturient.passport_id}&passport_series=${abiturient.passport_series}">
+                                Edit
+                            </a>
+                        </td>
+                        <td>
+                            <a href="Controller?command=delete_abiturient&passport_id=${abiturient.passport_id}&passport_series=${abiturient.passport_series}">
                             X
-                        </a> </td>
+                            </a>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>

@@ -5,7 +5,6 @@ import by.epam.training.kazieva.logic.AbiturientLogic;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 
-import static by.epam.training.kazieva.command.URLConstant.PATH_PAGE_MAIN;
 import static java.lang.Integer.parseInt;
 
 public class DeleteAbiturientCommand implements ActionCommand {

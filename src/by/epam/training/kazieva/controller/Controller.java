@@ -33,8 +33,7 @@ public class Controller extends HttpServlet {
         String action = request.getParameter("command");
 
         if (page != null) {
-            if ("add_abiturient".equals(action)||"delete_abiturient".equals(action)){
-                System.out.println("sendred");
+            if ("add_abiturient".equals(action)||"delete_abiturient".equals(action)||"update_abiturient".equals(action)){
                 response.sendRedirect("Controller?command=result");
             }
             else {
