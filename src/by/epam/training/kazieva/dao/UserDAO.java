@@ -28,17 +28,14 @@ public class UserDAO extends AbstractDAO {
         PreparedStatement statement = null;
         ResultSet result = null;
         String query = "SELECT * FROM user;";
-        System.out.println(query);
         try{
             connection = pool.getConnection();
             statement = getPreparedStatement(connection, query);
             result = statement.executeQuery();
-            System.out.println("все норм");
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(result);
         return result;
     }
     public static void registrateUser(String login, String password, String key, String fname, String sname) {

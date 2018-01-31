@@ -79,4 +79,16 @@ public class AbiturientLogic {
     public static void updateAbiturient(Abiturient abiturient, String old_passport_series, int old_passport_id){
         AbiturientDAO.updateAbiturient(abiturient, old_passport_series, old_passport_id);
     }
+    public static int getCountOfAbitirients(){
+        int count=0;
+        ResultSet resultSet=AbiturientDAO.getCountOfAbitirients();
+        try {
+            if(resultSet.next()){
+                count=Integer.parseInt(resultSet.getString("count"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 }

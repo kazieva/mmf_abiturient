@@ -95,7 +95,5 @@
             </table>
         <hr>
     </div>
-
-</table>
 </body>
 </html>

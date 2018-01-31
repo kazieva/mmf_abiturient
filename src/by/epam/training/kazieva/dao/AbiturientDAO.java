@@ -86,5 +86,19 @@ public class AbiturientDAO extends AbstractDAO{
             e.printStackTrace();
         }
     }
+    public static ResultSet getCountOfAbitirients(){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        String query="SELECT count(*) as count FROM abiturient;";
+        ResultSet result=null;
+        try{
+            WrapperConnection connection = pool.getConnection();
+            PreparedStatement statement = getPreparedStatement(connection, query);
+            result = statement.executeQuery();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
 }

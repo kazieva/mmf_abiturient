@@ -13,7 +13,6 @@ public class AllUsersCommand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
         String page=null;
-        System.out.println("in comand all");
         List<User> users = UserLogic.getAllUsers();
         System.out.println();
         if(users.size()!=0){
