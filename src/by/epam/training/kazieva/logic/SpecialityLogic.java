@@ -49,6 +49,12 @@ public class SpecialityLogic {
         return specialityId;
     }
     public static void deleteSpecialityById(int id){
+
         SpecialityDAO.deleteSpeciality(id);
+    }
+    public static void addNewSpeciality(int speciality_id, String ru_name, String en_name, int recruitment_plan ){
+        SpecialityDAO.addSpeciality(speciality_id, recruitment_plan);
+        SpecialityDAO.addSpecialityTranslate(speciality_id, "ru", ru_name);
+        SpecialityDAO.addSpecialityTranslate(speciality_id, "en", en_name);
     }
 }

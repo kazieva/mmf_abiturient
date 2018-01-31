@@ -60,4 +60,32 @@ public class SpecialityDAO extends AbstractDAO {
             e.printStackTrace();
         }
     }
+    public static void addSpeciality(int id, int recruitment_plan){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        String query="INSERT INTO speciality " +
+                "(id, recruitment_plan) " +
+                "VALUES ("+id+", "+recruitment_plan+");";
+        try{
+            WrapperConnection connection = pool.getConnection();
+            PreparedStatement statement = getPreparedStatement(connection, query);
+            statement.executeUpdate();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void addSpecialityTranslate(int id, String lang, String name){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        String query="INSERT INTO speciality_translate " +
+                "(speciality_id, lang, speciality_name) " +
+                "VALUES ("+id+", \""+lang+"\", \""+name+"\");";
+        try{
+            WrapperConnection connection = pool.getConnection();
+            PreparedStatement statement = getPreparedStatement(connection, query);
+            statement.executeUpdate();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

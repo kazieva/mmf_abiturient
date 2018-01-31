@@ -36,7 +36,7 @@ public class Controller extends HttpServlet {
             if ("add_abiturient".equals(action)||"delete_abiturient".equals(action)||"update_abiturient".equals(action)){
                 response.sendRedirect("Controller?command=result");
             }else{
-            if("delete_speciality".equals(action)){
+            if("delete_speciality".equals(action)||"add_speciality".equals(action)){
                 response.sendRedirect("Controller?command=result_speciality");
             }else{
             if("registration".equals(action)||"cange_user_role".equals(action)){

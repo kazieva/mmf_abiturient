@@ -31,4 +31,8 @@ interface ParamConstant {
     public static final String PARAM_NAME_NEW_LANGUAGE_CERTIFICATE = "new_language_certificate";
     public static final String PARAM_NAME_NEW_SPECIALITY = "new_speciality";
     public static final String PARAM_NAME_SPECIALITY_ID = "id";
+    public static final String PARAM_NAME_SPECIALITY_RU_NAME = "ru_speciality_name";
+    public static final String PARAM_NAME_SPECIALITY_EN_NAME = "en_speciality_name";
+    public static final String PARAM_NAME_SPECIALITY_RECRUTMENT_PLAN = "recruitment_plan";
+
 }

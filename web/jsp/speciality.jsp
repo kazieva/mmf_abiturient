@@ -35,6 +35,6 @@
         </c:forEach>
     </table>
     <hr>
-
+    <a href="newspeciality.jsp">NEW SPECIALITY</a>
 </body>
 </html>

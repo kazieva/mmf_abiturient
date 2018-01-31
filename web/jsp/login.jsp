@@ -28,8 +28,9 @@
     <a href="registration.jsp">
         registration
     </a>
+    <hr>
     <a href="Controller?command=all_users">
-        registration
+        users
     </a>
 
 
