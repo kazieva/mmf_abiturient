@@ -39,13 +39,15 @@ public class SpecialityLogic {
         }
     }
     public static void addNewSpeciality(int speciality_id, String ru_name, String en_name, int recruitment_plan ){
-        SpecialityDAO specialityDAO = new SpecialityDAO();
-        try {
-            specialityDAO.addSpeciality(speciality_id, recruitment_plan);
-            specialityDAO.addSpecialityTranslate(speciality_id, "ru", ru_name);
-            specialityDAO.addSpecialityTranslate(speciality_id, "en", en_name);
-        } catch (DAOException e) {
-            LOGGER.error(e);
+        if(Validator.newSpecialityValidation(speciality_id, ru_name, en_name,recruitment_plan )){
+            SpecialityDAO specialityDAO = new SpecialityDAO();
+            try {
+                specialityDAO.addSpeciality(speciality_id, recruitment_plan);
+                specialityDAO.addSpecialityTranslate(speciality_id, "ru", ru_name);
+                specialityDAO.addSpecialityTranslate(speciality_id, "en", en_name);
+            } catch (DAOException e) {
+                LOGGER.error(e);
+            }
         }
     }
 }

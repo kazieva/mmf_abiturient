@@ -11,11 +11,13 @@ public class UserLogic {
     private static final Logger LOGGER = Logger.getLogger(UserLogic.class);
     public static User findUser(String login, String password, String key) {
         User user = null;
-        UserDAO userDAO = new UserDAO();
-        try {
-            user = userDAO.findUser(login, password, key);
-        } catch (DAOException e) {
-            LOGGER.error(e);
+        if(Validator.loginationValidation(login, password, key)){
+            UserDAO userDAO = new UserDAO();
+            try {
+                user = userDAO.findUser(login, password, key);
+            } catch (DAOException e) {
+                LOGGER.error(e);
+            }
         }
         return user;
     }
@@ -30,15 +32,15 @@ public class UserLogic {
         return resultUserList;
     }
     public static void registrateUser(String login, String password, String key, String fname, String sname){
-        //validation
-
-        UserDAO userDAO = new UserDAO();
-        try {
-            userDAO.registrateUser(login, password, key, fname, sname);
-        } catch (DAOException e) {
-            LOGGER.error(e);
+        boolean flag = Validator.registrationValidation(login, password, key, fname, sname);
+        if(flag) {
+            UserDAO userDAO = new UserDAO();
+            try {
+                userDAO.registrateUser(login, password, key, fname, sname);
+            } catch (DAOException e) {
+                LOGGER.error(e);
+            }
         }
-
     }
     public static void changeUserRole(String login, String user_role){
         //validation
