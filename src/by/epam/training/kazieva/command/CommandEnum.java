@@ -57,14 +57,14 @@ public enum CommandEnum {
             this.command=new DeleteSpecialityCommand();
         }
     },
-    EDIT_SPECIALITY{
+    ALL_USERS{
         {
-            this.command = new EditAbiturientCommand();
+            this.command=new AllUsersCommand();
         }
     },
-    UPDATE_SPECIALITYSX{
+    UPDATE_USER_ROLE{
         {
-            this.command = new UpdateAbiturientCommand();
+            this.command = new UpdateUserRoleCommand();
         }
     };
     ActionCommand command;

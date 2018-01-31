@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import static java.lang.Byte.parseByte;
 import static java.lang.Integer.parseInt;
 
-public class UpdateAbiturientCommand implements ActionCommand{
+public class  UpdateAbiturientCommand implements ActionCommand{
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
         String page = null;

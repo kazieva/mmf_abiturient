@@ -9,4 +9,5 @@ interface URLConstant {
     public static final String PATH_EDIT_ABITURIENT_PAGE = "/jsp/editabiturient.jsp";
     public static final String PATH_EDIT_SPECIALITY_PAGE = "/jsp/editspeciality.jsp";
     public static final String PATH_PAGE_SPECIALITY = "/jsp/speciality.jsp";
+    public static final String PATH_PAGE_ALL_USERS= "/jsp/alluser.jsp";
 }

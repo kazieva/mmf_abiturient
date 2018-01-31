@@ -27,4 +27,40 @@ public class UserLogic {
         }
         return user;
     }
+    public static List<User> getAllUsers() {
+        ResultSet result = UserDAO.getAllUsers();
+        List<User> resultUserList = new ArrayList<>();
+        try {
+            if (result.next()) {
+                try {
+                    do {
+                        User user = new User();
+                        user.setLogin(result.getString("login"));
+                        user.setPassword(result.getString("password"));
+                        user.setFname(result.getString("fname"));
+                        user.setSname(result.getString("sname"));
+                        user.setRole(result.getString("user_role"));
+                        user.setKey(result.getString("key"));
+                        resultUserList.add(user);
+                    }while (result.next());
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultUserList;
+    }
+    public static void registrateUser(String login, String password, String key, String fname, String sname){
+        //validation
+        UserDAO.registrateUser(login, password, key, fname, sname);
+
+    }
+    public static void changeUserRole(String login, String user_role){
+        //validation
+        UserDAO.updateUserRole(login, user_role);
+
+    }
 }

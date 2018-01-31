@@ -7,6 +7,7 @@ interface ParamConstant {
     public static final String PARAM_NAME_PASSWORD = "password";
     public static final String PARAM_NAME_KEY = "key";
     public static final String PARAM_NAME_ROLE = "user";
+    public static final String PARAM_NAME_USER_ROLE = "user_role";
     public static final String PARAM_NAME_PASSPORT_SERIES = "passport_series";
     public static final String PARAM_NAME_PASSPORT_ID = "passport_id";
     public static final String PARAM_NAME_FNAME = "fname";

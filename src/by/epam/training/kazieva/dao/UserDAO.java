@@ -22,4 +22,51 @@ public class UserDAO extends AbstractDAO {
         }
         return result;
     }
+    public static ResultSet getAllUsers() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        WrapperConnection connection = null;
+        PreparedStatement statement = null;
+        ResultSet result = null;
+        String query = "SELECT * FROM user;";
+        System.out.println(query);
+        try{
+            connection = pool.getConnection();
+            statement = getPreparedStatement(connection, query);
+            result = statement.executeQuery();
+            System.out.println("все норм");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(result);
+        return result;
+    }
+    public static void registrateUser(String login, String password, String key, String fname, String sname) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        ResultSet result = null;
+            String query = "INSERT INTO user (login, user.password, user.key, fname, sname) VALUES (\""+
+                    login+"\", MD5('"+password+"'), MD5('"+key+"'), \""+fname+"\", \""+sname+"\");";
+        System.out.println(query);
+        try{
+            WrapperConnection connection = pool.getConnection();
+            PreparedStatement statement = getPreparedStatement(connection, query);
+            statement.executeUpdate();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void updateUserRole(String login, String role) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        ResultSet result = null;
+        String query = "UPDATE user SET user_role='"+role+"' WHERE login =\""+login+"\";";
+        try{
+            WrapperConnection connection = pool.getConnection();
+            PreparedStatement statement = getPreparedStatement(connection, query);
+            statement.executeUpdate();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
