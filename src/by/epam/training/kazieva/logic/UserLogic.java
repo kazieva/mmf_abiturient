@@ -2,65 +2,52 @@ package by.epam.training.kazieva.logic;
 
 import by.epam.training.kazieva.dao.UserDAO;
 import by.epam.training.kazieva.entity.User;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import by.epam.training.kazieva.exception.DAOException;
+import org.apache.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserLogic {
+    private static final Logger LOGGER = Logger.getLogger(UserLogic.class);
     public static User findUser(String login, String password, String key) {
         User user = null;
-        ResultSet result = UserDAO.findUser(login, password, key);
+        UserDAO userDAO = new UserDAO();
         try {
-            if (result.next()) {
-                user = new User();
-                user.setLogin(result.getString("login"));
-                user.setPassword(result.getString("password"));
-                user.setFname(result.getString("fname"));
-                user.setSname(result.getString("sname"));
-                user.setRole(result.getString("user_role"));
-                user.setKey(result.getString("key"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            user = userDAO.findUser(login, password, key);
+        } catch (DAOException e) {
+            LOGGER.error(e);
         }
         return user;
     }
     public static List<User> getAllUsers() {
-        ResultSet result = UserDAO.getAllUsers();
+        UserDAO userDAO = new UserDAO();
         List<User> resultUserList = new ArrayList<>();
         try {
-            if (result.next()) {
-                try {
-                    do {
-                        User user = new User();
-                        user.setLogin(result.getString("login"));
-                        user.setPassword(result.getString("password"));
-                        user.setFname(result.getString("fname"));
-                        user.setSname(result.getString("sname"));
-                        user.setRole(result.getString("user_role"));
-                        user.setKey(result.getString("key"));
-                        resultUserList.add(user);
-                    }while (result.next());
-                }
-                catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        resultUserList =userDAO.getAllUsers();
+        } catch (DAOException e) {
+            LOGGER.error(e);
         }
         return resultUserList;
     }
     public static void registrateUser(String login, String password, String key, String fname, String sname){
         //validation
-        UserDAO.registrateUser(login, password, key, fname, sname);
+
+        UserDAO userDAO = new UserDAO();
+        try {
+            userDAO.registrateUser(login, password, key, fname, sname);
+        } catch (DAOException e) {
+            LOGGER.error(e);
+        }
 
     }
     public static void changeUserRole(String login, String user_role){
         //validation
-        UserDAO.updateUserRole(login, user_role);
 
+        UserDAO userDAO = new UserDAO();
+        try {
+            userDAO.updateUserRole(login, user_role);
+        } catch (DAOException e) {
+            LOGGER.error(e);
+        }
     }
 }

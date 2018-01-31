@@ -3,19 +3,20 @@ package by.epam.training.kazieva.command.factory;
 import by.epam.training.kazieva.command.ActionCommand;
 import by.epam.training.kazieva.command.CommandEnum;
 import by.epam.training.kazieva.command.EmptyCommand;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class ActionFactory {
+
+    private static final Logger LOGGER = Logger.getLogger(ActionFactory.class);
     public ActionCommand defineCommand(HttpServletRequest request) {
         ActionCommand current = new EmptyCommand();
-        // извлечение имени команды из запроса
         String action = request.getParameter("command");
+        LOGGER.info(action);
         if (action == null || action.isEmpty()) {
-            // если команда не задана в текущем запросе
             return current;
         }
-        // получение объекта, соответствующего команде
         try {
             CommandEnum currentEnum = CommandEnum.valueOf(action.toUpperCase());
             current = currentEnum.getCurrentCommand();

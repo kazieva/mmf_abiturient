@@ -6,6 +6,7 @@ public class LogoutCommand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) {
         String page = PATH_PAGE_LOGIN;
+        request.getSession().invalidate();
         return page;
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaginationLogic {
-    private static final int PARAM_NAME_NUMBER_OF_LINES = 8;
+   /* private static final int PARAM_NAME_NUMBER_OF_LINES = 8;
     private static int getAmountOfPages(){
         int amountOfPages=0;
         int countOfAbitirients = AbiturientLogic.getCountOfAbitirients();
@@ -24,5 +24,5 @@ public class PaginationLogic {
             pages.add(i);
         }
         return pages;
-    }
+    }*/
 }

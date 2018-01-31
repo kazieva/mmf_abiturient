@@ -1,69 +1,134 @@
 package by.epam.training.kazieva.dao;
 import by.epam.training.kazieva.connect.ConnectionPool;
 import by.epam.training.kazieva.connect.WrapperConnection;
+import by.epam.training.kazieva.entity.User;
+import by.epam.training.kazieva.exception.ConnectionPoolException;
+import by.epam.training.kazieva.exception.DAOException;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO extends AbstractDAO {
-
-    public static ResultSet findUser(String login, String password, String key) {
+    private static final Logger LOGGER = Logger.getLogger(UserDAO.class);
+    public User findUser(String login, String password, String key) throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
         ResultSet result = null;
+        User user = new User();;
         String query = "SELECT * FROM user WHERE login = \"" +login+"\" AND password=MD5('" + password + "') AND user.`key`=MD5(\""+key+"\");";
         try{
             connection = pool.getConnection();
             statement = getPreparedStatement(connection, query);
             result = statement.executeQuery();
+            try {
+                if (result.next()) {
+                    user.setLogin(result.getString("login"));
+                    user.setPassword(result.getString("password"));
+                    user.setFname(result.getString("fname"));
+                    user.setSname(result.getString("sname"));
+                    user.setRole(result.getString("user_role"));
+                    user.setKey(result.getString("key"));
+                }
+            } catch (SQLException e) {
+                LOGGER.error(e);
+            }
+        } catch (ConnectionPoolException e) {
+            LOGGER.error(e);
+        } catch (SQLException e) {
+            throw new DAOException("Error during findUser", e);
+        } catch (Exception e) {
+            LOGGER.error(e);
+        } finally {
+            close(statement);
+            pool.releaseConnection(connection);
         }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
+        return user;
     }
-    public static ResultSet getAllUsers() {
+    public List<User> getAllUsers() throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
         ResultSet result = null;
+        List<User> resultUserList = new ArrayList<>();
         String query = "SELECT * FROM user;";
         try{
             connection = pool.getConnection();
             statement = getPreparedStatement(connection, query);
             result = statement.executeQuery();
+            if (result.next()) {
+                try {
+                    do {
+                        User user = new User();
+                        user.setLogin(result.getString("login"));
+                        user.setPassword(result.getString("password"));
+                        user.setFname(result.getString("fname"));
+                        user.setSname(result.getString("sname"));
+                        user.setRole(result.getString("user_role"));
+                        user.setKey(result.getString("key"));
+                        resultUserList.add(user);
+                    }while (result.next());
+                }
+                catch (SQLException e) {
+                    LOGGER.error(e);
+                }
+            }
+        } catch (ConnectionPoolException e) {
+            LOGGER.error(e);
+        } catch (SQLException e) {
+            throw new DAOException("Error during getAllUsers", e);
+        } catch (Exception e) {
+            LOGGER.error(e);
+        } finally {
+            close(statement);
+            pool.releaseConnection(connection);
         }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
+        return resultUserList;
     }
-    public static void registrateUser(String login, String password, String key, String fname, String sname) {
+    public void registrateUser(String login, String password, String key, String fname, String sname) throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
+        WrapperConnection connection = null;
+        PreparedStatement statement = null;
         ResultSet result = null;
-            String query = "INSERT INTO user (login, user.password, user.key, fname, sname) VALUES (\""+
+        String query = "INSERT INTO user (login, user.password, user.key, fname, sname) VALUES (\""+
                     login+"\", MD5('"+password+"'), MD5('"+key+"'), \""+fname+"\", \""+sname+"\");";
-        System.out.println(query);
+        LOGGER.info(query);
         try{
-            WrapperConnection connection = pool.getConnection();
-            PreparedStatement statement = getPreparedStatement(connection, query);
+            connection = pool.getConnection();
+            statement = getPreparedStatement(connection, query);
             statement.executeUpdate();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        } catch (ConnectionPoolException e) {
+            LOGGER.error(e);
+        } catch (SQLException e) {
+            throw new DAOException("Error during registrateUser", e);
+        } catch (Exception e) {
+            LOGGER.error(e);
+        } finally {
+            close(statement);
+            pool.releaseConnection(connection);
         }
     }
-    public static void updateUserRole(String login, String role) {
+    public void updateUserRole(String login, String role) throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
+        WrapperConnection connection = null;
+        PreparedStatement statement = null;
         ResultSet result = null;
         String query = "UPDATE user SET user_role='"+role+"' WHERE login =\""+login+"\";";
         try{
-            WrapperConnection connection = pool.getConnection();
-            PreparedStatement statement = getPreparedStatement(connection, query);
+            connection = pool.getConnection();
+            statement = getPreparedStatement(connection, query);
             statement.executeUpdate();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        } catch (ConnectionPoolException e) {
+            LOGGER.error(e);
+        } catch (SQLException e) {
+            throw new DAOException("Error during updateUserRole ", e);
+        } catch (Exception e) {
+            LOGGER.error(e);
+        } finally {
+            close(statement);
+            pool.releaseConnection(connection);
         }
     }
 }

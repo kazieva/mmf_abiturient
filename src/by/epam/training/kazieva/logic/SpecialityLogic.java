@@ -2,59 +2,50 @@ package by.epam.training.kazieva.logic;
 
 import by.epam.training.kazieva.dao.SpecialityDAO;
 import by.epam.training.kazieva.entity.Speciality;
-
-import java.sql.ResultSet;
+import by.epam.training.kazieva.exception.DAOException;
+import org.apache.log4j.Logger;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpecialityLogic {
+    private static final Logger LOGGER = Logger.getLogger(SpecialityLogic.class);
     public static List<Speciality> findAllSpeciality(){
-        ResultSet resultSpeciality= SpecialityDAO.findAllSpeciality();
+        SpecialityDAO specialityDAO = new SpecialityDAO();
         List<Speciality > resultSpecialityList = new ArrayList<>();
         try {
-            if (resultSpeciality.next()) {
-                try {
-                    do {
-                        Speciality res=new Speciality();
-                        res.setId(resultSpeciality.getInt("id"));
-                        res.setRecruitment_plan(resultSpeciality.getInt("recruitment_plan"));
-                        res.setSpeciality_name(resultSpeciality.getString("speciality_name"));
-                        res.setLang(resultSpeciality.getString("lang"));
-                        resultSpecialityList.add(res);
-                    }while (resultSpeciality.next());
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(resultSpecialityList);
-            }
+            resultSpecialityList=specialityDAO.findAllSpeciality();
         } catch (SQLException e) {
-            System.out.println("empty");
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return resultSpecialityList;
     }
     public static int getSpecialityId(String specialityName){
         int specialityId=0;
-        ResultSet result = SpecialityDAO.getSpecialityId(specialityName);
+        SpecialityDAO specialityDAO = new SpecialityDAO();
         try {
-            if (result.next()) {
-                specialityId= result.getInt("speciality_id");
-            }
+            specialityId=specialityDAO.getSpecialityId(specialityName);
         } catch (SQLException e) {
-            System.out.println("empty");
-            e.printStackTrace();
+            LOGGER.error(e);
         }
-        System.out.println(specialityId);
         return specialityId;
     }
     public static void deleteSpecialityById(int id){
-
-        SpecialityDAO.deleteSpeciality(id);
+        SpecialityDAO specialityDAO = new SpecialityDAO();
+        try {
+            specialityDAO.deleteSpeciality(id);
+        } catch (DAOException e) {
+            LOGGER.error(e);
+        }
     }
     public static void addNewSpeciality(int speciality_id, String ru_name, String en_name, int recruitment_plan ){
-        SpecialityDAO.addSpeciality(speciality_id, recruitment_plan);
-        SpecialityDAO.addSpecialityTranslate(speciality_id, "ru", ru_name);
-        SpecialityDAO.addSpecialityTranslate(speciality_id, "en", en_name);
+        SpecialityDAO specialityDAO = new SpecialityDAO();
+        try {
+            specialityDAO.addSpeciality(speciality_id, recruitment_plan);
+            specialityDAO.addSpecialityTranslate(speciality_id, "ru", ru_name);
+            specialityDAO.addSpecialityTranslate(speciality_id, "en", en_name);
+        } catch (DAOException e) {
+            LOGGER.error(e);
+        }
     }
 }
