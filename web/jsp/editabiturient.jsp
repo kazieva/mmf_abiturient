@@ -6,6 +6,26 @@
     <title>Title</title>
 </head>
 <body>
+
+<a  href="Controller?command=result">
+    Abiturients
+</a>
+<a href="Controller?command=result_speciality">
+    Specialities
+</a>
+<hr>
+<c:if test="${sessionScope.user_role==\"admin\"}">
+    <a href="Controller?command=go_to_registration">
+        registration new user
+    </a>
+
+    <a href="Controller?command=all_users">
+        all users
+    </a>
+</c:if>
+<a href="Controller?command=logout">
+    logout
+</a>
 <h2 class="h"> Редактировать заявку</h2>
 <div class="inputForm">
     <form method="POST" action="controller">

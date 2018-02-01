@@ -6,6 +6,25 @@
     <title>Title</title>
 </head>
 <body>
+<a  href="Controller?command=result">
+    Abiturients
+</a>
+<a href="Controller?command=result_speciality">
+    Specialities
+</a>
+<hr>
+<c:if test="${sessionScope.user_role==\"admin\"}">
+    <a href="Controller?command=go_to_registration">
+        registration new user
+    </a>
+
+    <a href="Controller?command=all_users">
+        all users
+    </a>
+</c:if>
+<a href="Controller?command=logout">
+    logout
+</a>
 
 <H2>ALL USERS</H2>
 <table >
@@ -30,6 +49,11 @@
     </c:forEach>
 </table>
 <hr>
+<c:if test="${sessionScope.user_role==\"admin\"}">
+    <a href="Controller?command=go_to_registration">
+        Registrate new user
+    </a>
+</c:if>
 
 </body>
 </html>

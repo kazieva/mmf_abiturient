@@ -29,11 +29,7 @@ public class Controller extends HttpServlet {
         ActionFactory client = new ActionFactory();
         ActionCommand command = client.defineCommand(request);
         HttpSession session = request.getSession(false);
-        if(session==null){
-            System.out.println("session null");
-        }
         String user_role=(String)session.getAttribute("user_role");
-        System.out.println(user_role+" role");
         String action = request.getParameter("command");
         if("login".equals(action)) {
             try {

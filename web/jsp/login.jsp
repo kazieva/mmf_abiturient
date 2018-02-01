@@ -17,22 +17,5 @@
         <br/>
         <input type="submit" value="Log in"/>
     </form>
-
-    <form method="POST" action="controller">
-        <input type="hidden" name="command" value="result" />
-        <input type="submit" value="Result"/>
-    </form>
-    <a href="Controller?command=result_speciality">
-        Specialities
-    </a>
-    <a href="Controller?command=go_to_registration">
-        registration
-    </a>
-    <hr>
-    <a href="Controller?command=all_users">
-        users
-    </a>
-
-
 </body>
 </html>

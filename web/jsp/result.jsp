@@ -6,6 +6,26 @@
     <title>Title</title>
 </head>
 <body>
+    <a  href="Controller?command=result">
+        Abiturients
+    </a>
+    <a href="Controller?command=result_speciality">
+        Specialities
+    </a>
+    <hr>
+    <c:if test="${sessionScope.user_role==\"admin\"}">
+        <a href="Controller?command=go_to_registration">
+            registration new user
+        </a>
+
+        <a href="Controller?command=all_users">
+             all users
+        </a>
+    </c:if>
+    <a href="Controller?command=logout">
+        logout
+    </a>
+
 <c:if test="${sessionScope.user_role==\"admin\"}">
 <h2> Информация о пользователе</h2>
     <table >
@@ -17,11 +37,11 @@
             <td>Фамилия</td>
         </tr>
         <tr>
-             <td>${user.login}</td>
-             <td>${user.password}</td>
-             <td>${user.key}</td>
-             <td>${user.fname}</td>
-             <td>${user.sname}</td>
+             <td>${sessionScope.user.login}</td>
+             <td>${sessionScope.user.password}</td>
+             <td>${sessionScope.user.key}</td>
+             <td>${sessionScope.user.fname}</td>
+             <td>${sessionScope.user.sname}</td>
         </tr>
     </table>
 </c:if>
