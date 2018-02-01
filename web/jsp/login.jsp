@@ -25,7 +25,7 @@
     <a href="Controller?command=result_speciality">
         Specialities
     </a>
-    <a href="registration.jsp">
+    <a href="Controller?command=go_to_registration">
         registration
     </a>
     <hr>

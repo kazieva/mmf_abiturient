@@ -36,5 +36,9 @@
     </table>
     <hr>
     <a href="newspeciality.jsp">NEW SPECIALITY</a>
+    </form>
+    <a href="Controller?command=logout">
+        logout
+    </a>
 </body>
 </html>

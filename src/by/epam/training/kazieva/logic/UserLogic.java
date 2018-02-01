@@ -19,6 +19,7 @@ public class UserLogic {
                 LOGGER.error(e);
             }
         }
+        System.out.println(user+" logic");
         return user;
     }
     public static List<User> getAllUsers() {

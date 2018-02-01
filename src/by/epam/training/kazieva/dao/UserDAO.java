@@ -17,7 +17,7 @@ public class UserDAO extends AbstractDAO {
         WrapperConnection connection = null;
         PreparedStatement statement = null;
         ResultSet result = null;
-        User user = new User();;
+        User user = null;
         String query = "SELECT * FROM user WHERE login = \"" +login+"\" AND password=MD5('" + password + "') AND user.`key`=MD5(\""+key+"\");";
         try{
             connection = pool.getConnection();
@@ -25,6 +25,7 @@ public class UserDAO extends AbstractDAO {
             result = statement.executeQuery();
             try {
                 if (result.next()) {
+                    user= new User();
                     user.setLogin(result.getString("login"));
                     user.setPassword(result.getString("password"));
                     user.setFname(result.getString("fname"));
@@ -51,14 +52,15 @@ public class UserDAO extends AbstractDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        ResultSet result = null;
-        List<User> resultUserList = new ArrayList<>();
+        ResultSet result;
+        List<User> resultUserList = null;
         String query = "SELECT * FROM user;";
         try{
             connection = pool.getConnection();
             statement = getPreparedStatement(connection, query);
             result = statement.executeQuery();
             if (result.next()) {
+                resultUserList= new ArrayList<>();
                 try {
                     do {
                         User user = new User();
@@ -114,7 +116,7 @@ public class UserDAO extends AbstractDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        ResultSet result = null;
+        ResultSet result;
         String query = "UPDATE user SET user_role='"+role+"' WHERE login =\""+login+"\";";
         try{
             connection = pool.getConnection();

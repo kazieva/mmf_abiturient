@@ -11,11 +11,15 @@ public enum CommandEnum {
             this.command = new LogoutCommand();
         }
     },
+    GO_TO_REGISTRATION {
+        {
+            this.command = new GoToRegistrsionCommand();
+        }
+    },
     REGISTRATION {
         {
             this.command = new RegistrationCommand();
         }
-
     },
     RESULT{
         {

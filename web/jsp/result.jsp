@@ -6,6 +6,7 @@
     <title>Title</title>
 </head>
 <body>
+<c:if test="${sessionScope.user_role==\"admin\"}">
 <h2> Информация о пользователе</h2>
     <table >
         <tr>
@@ -23,6 +24,7 @@
              <td>${user.sname}</td>
         </tr>
     </table>
+</c:if>
     <h2 class="h"> Заполнить заявку</h2>
     <div class="inputForm">
         <form method="POST" action="controller">
@@ -56,6 +58,7 @@
             <input type="submit" value="Оформить" />
         </form>
     </div>
+
     <hr>
     <div>
         <H2>Таблица подавших документы</H2>

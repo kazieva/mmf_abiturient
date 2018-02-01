@@ -6,6 +6,7 @@ import by.epam.training.kazieva.logic.AbiturientLogic;
 import by.epam.training.kazieva.logic.SpecialityLogic;
 import by.epam.training.kazieva.logic.UserLogic;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class LoginCommand implements ActionCommand{
@@ -18,6 +19,7 @@ public class LoginCommand implements ActionCommand{
 
         User user = UserLogic.findUser(login, password, key);
         if(user!=null){
+            System.out.println(user+" comand");
             request.setAttribute("user", user);
             page=PATH_PAGE_MAIN;
 
@@ -27,6 +29,8 @@ public class LoginCommand implements ActionCommand{
 
             List<Speciality> resultSpecialityList = SpecialityLogic.findAllSpeciality();
             request.setAttribute("specialities", resultSpecialityList);
+            HttpSession session = request.getSession(true);
+            session.setAttribute("user_role", user.getRole());
         }
         else {
 
