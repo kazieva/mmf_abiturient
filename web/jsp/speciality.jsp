@@ -3,7 +3,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-    <title>Title</title>
+    <title>MMF</title>
+    <style>
+        <%@include file='css/style.css' %>
+    </style>
 </head>
 <body>
 <a  href="Controller?command=result">
@@ -26,37 +29,52 @@
     logout
 </a>
 
-    <table > Специальности
-        <tr>
+<section>
+    <h1>Table of all abiturients</h1>
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+            <tr>
 
-            <td>ID специальности</td>
-            <td>Название</td>
-            <td>План приема</td>
-            <c:if test="${sessionScope.user_role==\"admin\"}">
-                <td>  </td>
-                <td>  </td>
-            </c:if>
-        </tr>
-        <c:forEach items="${requestScope.specialities}" var="speciality">
-
-                <td>${speciality.id}</td>
-                <td>${speciality.speciality_name}</td>
-                <td>${speciality.recruitment_plan}</td>
+                <td>ID специальности</td>
+                <td>Название</td>
+                <td>План приема</td>
                 <c:if test="${sessionScope.user_role==\"admin\"}">
-                    <td>
-                        <a href="Controller?command=edit_speciality&id=${speciality.id}">
-                            Edit
-                        </a>
-                    </td>
-                    <td>
-                        <a href="Controller?command=delete_speciality&id=${speciality.id}">
-                            X
-                        </a>
-                    </td>
+                    <td>  </td>
+                    <td>  </td>
                 </c:if>
             </tr>
-        </c:forEach>
-    </table>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+
+            <c:forEach items="${requestScope.specialities}" var="speciality">
+                <tr>
+                    <td>${speciality.id}</td>
+                    <td>${speciality.speciality_name}</td>
+                    <td>${speciality.recruitment_plan}</td>
+                    <c:if test="${sessionScope.user_role==\"admin\"}">
+                        <td>
+                            <a href="Controller?command=edit_speciality&id=${speciality.id}">
+                                Edit
+                            </a>
+                        </td>
+                        <td>
+                            <a href="Controller?command=delete_speciality&id=${speciality.id}">
+                                X
+                            </a>
+                        </td>
+                    </c:if>
+
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</section>
     <c:if test="${sessionScope.user_role==\"admin\"}">
         <hr>
         <a href="newspeciality.jsp">NEW SPECIALITY</a>

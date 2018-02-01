@@ -22,7 +22,6 @@ public class LoginCommand implements ActionCommand{
             HttpSession session = request.getSession(true);
             System.out.println(user+" comand");
             session.setAttribute("user", user);
-          //  request.setAttribute("user", user);
             page=PATH_PAGE_MAIN;
 
             List<Abiturient > resultAbiturientsList = AbiturientLogic.findAllAbiturient();
