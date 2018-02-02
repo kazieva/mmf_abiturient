@@ -53,17 +53,17 @@
                     <input type="hidden" name="command" value="add_speciality"/>
                     <br>
                     <p>
-                        <input type="number" name="id" placeholder="Speciality id"/>
+                        <input type="number" name="id" required placeholder="Speciality id"/>
                     </p>
                     <p>
 
-                        <input type="text" name="en_speciality_name" placeholder="Name on english"/>
+                        <input type="text" name="en_speciality_name" required placeholder="Name on english"/>
                     </p>
                     <p>
-                        <input type="text" name="ru_speciality_name" placeholder="Name on russial"/>
+                        <input type="text" name="ru_speciality_name" required placeholder="Name on russial"/>
                     </p>
                     <p>
-                        <input type="number"size="5" min = "1" name="recruitment_plan" placeholder="recruitment plan">
+                        <input type="number"size="5" min = "1" name="recruitment_plan"  required placeholder="recruitment plan">
                     </p>
                     <input type="submit" value="Add speciality" />
                 </form>

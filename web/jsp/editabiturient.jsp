@@ -52,19 +52,19 @@
                     <form method="POST" action="controller">
                         <input type="hidden" name="command" value="update_abiturient"/>
                         <br>
-                        <input type="hidden" name="passport_id" value="${abiturient.passport_id}"/>
-                        <input type="hidden" name="passport_series" value="${abiturient.passport_series}"/>
+                        <input type="hidden" name="passport_id" required value="${abiturient.passport_id}"/>
+                        <input type="hidden" name="passport_series" required value="${abiturient.passport_series}"/>
                         <p>
-                            <input type="text" name="new_passport_series" value="${abiturient.passport_series}" placeholder="Серия паспорта"/>
-                            <input type="number" name="new_passport_id" value="${abiturient.passport_id}" placeholder="Номер паспорта"/>
+                            <input type="text" name="new_passport_series" value="${abiturient.passport_series}" required placeholder="Серия паспорта"/>
+                            <input type="number" name="new_passport_id" value="${abiturient.passport_id}" required placeholder="Номер паспорта"/>
                         </p>
                         <p>
-                            <input type="text" name="new_fname" value="${abiturient.fname}" placeholder="Имя"/>
-                            <input type="text" name="new_sname" value="${abiturient.sname}" placeholder="Фамилия"/>
+                            <input type="text" name="new_fname" value="${abiturient.fname}" required placeholder="Имя"/>
+                            <input type="text" name="new_sname" value="${abiturient.sname}" required placeholder="Фамилия"/>
                             <input type="text" name="new_patronymic" value="${abiturient.patronymic}" placeholder="Отчество"/>
                         </p>
                         <p>
-                            <input type="text" name="new_phone" name="new_phone" value="${abiturient.phone}" placeholder="Телефон"/>
+                            <input type="text" name="new_phone" required name="new_phone" value="${abiturient.phone}" placeholder="Телефон"/>
                         </p>
                         <p>
                             <select  name="new_speciality">

@@ -33,9 +33,9 @@
                             <div id="login-tab-content" class="active">
                                 <form class="login-form" method="POST" action="controller">
                                     <input type="hidden" name="command" value="login" />
-                                    <input type="text" class="input" id="user_login" autocomplete="off" name="login" placeholder="Email or Username">
-                                    <input type="password" class="input" id="user_pass" autocomplete="off" name="password" placeholder="Password">
-                                    <input type="password" class="input" id="user_key" autocomplete="off" name="key" placeholder="Key">
+                                    <input type="text" class="input" id="user_login" autocomplete="off" name="login" required placeholder="Email or Username">
+                                    <input type="password" class="input" id="user_pass" autocomplete="off" name="password" required placeholder="Password">
+                                    <input type="password" class="input" id="user_key" autocomplete="off" name="key" required placeholder="Key">
                                     <input type="submit" class="button" value="Login">
                                 </form>
                             </div>
