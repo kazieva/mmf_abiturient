@@ -1,16 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: YiaKrevetko
-  Date: 23.01.2018
-  Time: 15:12
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language ="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
   <title>$Title$</title>
 </head>
 <body>
+<jsp:forward page="/jsp/login.jsp"></jsp:forward>
 <a href="jsp/login.jsp">
   Log in
 </a>

@@ -2,51 +2,72 @@
          pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+    <head>
+        <style>
+            <%@include file='css/style.css' %>
+            <%@include file='css/menu.css' %>
+        </style>
+    </head>
+    <body>
+        <nav class="menu" tabindex="0">
+            <div class="smartphone-menu-trigger"></div>
+            <div class="avatar">
+                <img src="https://st03.kakprosto.ru//images/article/2011/9/16/1_52552c35c5b0852552c35c5b46.png" />
+                <h2>${sessionScope.user.fname}</h2>
+                <h>${sessionScope.user.role}</h>
+            </div>
+            <ul>
+                <a href="Controller?command=result">
+                    <li tabindex="0" class="icon-dashboard">
+                        <span>Abiturients</span>
+                    </li>
+                </a>
+                <a href="Controller?command=result_speciality" >
+                    <li tabindex="0" class="icon-customers" >
+                        <span>Specialities</span>
+                    </li>
+                </a>
+                <c:if test="${sessionScope.user_role==\"admin\"}">
+                    <a href="Controller?command=all_users">
+                        <li tabindex="0" class="icon-users">
+                            <span>Users</span>
+                        </li>
+                    </a>
+                    <a href="Controller?command=go_to_registration">
+                        <li tabindex="0" class="icon-settings">
+                            <span>New user</span>
+                        </li>
+                    </a>
+                </c:if>
+                <a  href="Controller?command=logout">
+                    <li tabindex="0" class="icon-logout">
+                        <span>logout</span>
+                    </li>
+                </a>
+            </ul>
+        </nav>
+        <main>
+            <h2 class="h"> NEW SPECIALITY</h2>
+            <div class="inputForm">
+                <form method="POST" action="controller">
+                    <input type="hidden" name="command" value="add_speciality"/>
+                    <br>
+                    <p>
+                        <input type="number" name="id" placeholder="Speciality id"/>
+                    </p>
+                    <p>
 
-<a  href="Controller?command=result">
-    Abiturients
-</a>
-<a href="Controller?command=result_speciality">
-    Specialities
-</a>
-<hr>
-<c:if test="${sessionScope.user_role==\"admin\"}">
-    <a href="Controller?command=go_to_registration">
-        registration new user
-    </a>
-
-    <a href="Controller?command=all_users">
-        all users
-    </a>
-</c:if>
-<a href="Controller?command=logout">
-    logout
-</a>
-<h2 class="h"> NEW SPECIALITY</h2>
-<div class="inputForm">
-    <form method="POST" action="controller">
-        <input type="hidden" name="command" value="add_speciality"/>
-        <br>
-        <p>
-            <input type="number" name="id" placeholder="Speciality id"/>
-        </p>
-        <p>
-           Name on english
-            <input type="text" name="en_speciality_name" placeholder=""/>
-            Name on russial
-            <input type="text" name="ru_speciality_name" placeholder=""/>
-        </p>
-        <p>
-            recruitment plan
-            <input type="number"size="5" min = "1" name="recruitment_plan" required placeholder="">
-        </p>
-        <input type="submit" value="Add speciality" />
-    </form>
-</div>
-
-</body>
+                        <input type="text" name="en_speciality_name" placeholder="Name on english"/>
+                    </p>
+                    <p>
+                        <input type="text" name="ru_speciality_name" placeholder="Name on russial"/>
+                    </p>
+                    <p>
+                        <input type="number"size="5" min = "1" name="recruitment_plan" placeholder="recruitment plan">
+                    </p>
+                    <input type="submit" value="Add speciality" />
+                </form>
+            </div>
+        </main>
+    </body>
 </html>
