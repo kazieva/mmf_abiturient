@@ -10,7 +10,7 @@ import java.util.List;
 public class ResultSpecialityComand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
-         String page = null;
+         String page;
          List<Speciality> resultSpecialityList = SpecialityLogic.findAllSpeciality();
          if (resultSpecialityList.size()!=0) {
              request.setAttribute("specialities", resultSpecialityList);

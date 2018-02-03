@@ -20,23 +20,13 @@ public class LoginCommand implements ActionCommand{
         User user = UserLogic.findUser(login, password, key);
         if(user!=null){
             HttpSession session = request.getSession(true);
-            System.out.println(user+" comand");
-            session.setAttribute("user", user);
+            session.setAttribute(PARAM_NAME_ROLE, user);
             page=PATH_PAGE_MAIN;
-/*
-            List<Abiturient > resultAbiturientsList = AbiturientLogic.findAllAbiturient();
-            request.setAttribute("abiturients", resultAbiturientsList);
-            System.out.println(resultAbiturientsList);
-
-            List<Speciality> resultSpecialityList = SpecialityLogic.findAllSpeciality();
-            request.setAttribute("specialities", resultSpecialityList);
-*/
-            session.setAttribute("user_role", user.getRole());
-            request.setAttribute("redirect","true");
-            request.setAttribute("redirect_ulr", "Controller?command=result");
+            session.setAttribute(PARAM_NAME_USER_ROLE, user.getRole());
+            request.setAttribute(PARAM_NAME_REDIRECT,PARAM_NAME_TRUE);
+            request.setAttribute(PARAM_NAME_REDIRECT_URL, PATH_REDIRECT_RESULT);
         }
         else {
-
             request.setAttribute("errorLoginPassMessage","Incorrect login or password.");
             page = PATH_PAGE_LOGIN;
         }

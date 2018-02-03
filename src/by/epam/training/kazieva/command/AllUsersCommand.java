@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AllUsersCommand implements ActionCommand {
+    private static final String USERS="users";
 
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
@@ -16,7 +17,7 @@ public class AllUsersCommand implements ActionCommand {
         List<User> users = UserLogic.getAllUsers();
         System.out.println();
         if(users.size()!=0){
-            request.setAttribute("users",users);
+            request.setAttribute(USERS,users);
             page=PATH_PAGE_ALL_USERS;
         }
         return page;

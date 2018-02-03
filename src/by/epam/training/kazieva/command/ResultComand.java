@@ -25,8 +25,6 @@ public class ResultComand implements ActionCommand {
         }
         List<Speciality> resultSpecialityList = SpecialityLogic.findAllSpeciality();
         request.setAttribute("specialities", resultSpecialityList);
-        System.out.println(resultSpecialityList);
-
         return page;
     }
 }

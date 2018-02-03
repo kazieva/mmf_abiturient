@@ -16,6 +16,8 @@ public class RegistrationCommand implements ActionCommand {
         String sname = request.getParameter(PARAM_NAME_SNAME);
         UserLogic.registrateUser(login, password, key, fname, sname);
         MailLogic.sendRegistratedEmail(login, password, key, fname);
+        request.setAttribute("redirect","true");
+        request.setAttribute("redirect_ulr", "Controller?command=all_users");
         page=PATH_PAGE_ALL_USERS;
         return page;
     }

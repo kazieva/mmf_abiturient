@@ -19,6 +19,8 @@ public class UpdateUserRoleCommand implements ActionCommand {
                 UserLogic.changeUserRole(login, PARAM_USER_ROLE_USER);
             }
         }
-        return "/Controller?command=all_users";
+        request.setAttribute(PARAM_NAME_REDIRECT,PARAM_NAME_TRUE);
+        request.setAttribute(PARAM_NAME_REDIRECT_URL, PATH_REDIRECT_ALL_USERS);
+        return PATH_PAGE_ALL_USERS;
     }
 }

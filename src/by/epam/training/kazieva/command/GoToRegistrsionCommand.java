@@ -9,12 +9,12 @@ public class GoToRegistrsionCommand implements ActionCommand {
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
         String page;
         HttpSession session = request.getSession(false);
-        String user_role=(String)session.getAttribute("user_role");
+        String user_role=(String)session.getAttribute(PARAM_NAME_USER_ROLE);
         if ("admin role".equals(user_role+" role")){
             page=PATH_PAGE_GO_TO_REGISTRATION;
         }
         else{
-            page="/Controller?command=result";
+            page=PATH_REDIRECT_RESULT;
         }
         return page;
     }

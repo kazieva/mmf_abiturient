@@ -13,7 +13,7 @@ import static java.lang.Integer.parseInt;
 public class  UpdateAbiturientCommand implements ActionCommand{
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
-        String page = null;
+        String page;
         Abiturient abiturient=new Abiturient();
         abiturient.setPassport_id(parseInt(request.getParameter(PARAM_NAME_NEW_PASSPORT_ID)));
         abiturient.setPassport_series(request.getParameter(PARAM_NAME_NEW_PASSPORT_SERIES));
@@ -29,7 +29,9 @@ public class  UpdateAbiturientCommand implements ActionCommand{
         String old_passport_series = request.getParameter(PARAM_NAME_PASSPORT_SERIES);
         int old_passport_id= parseInt(request.getParameter(PARAM_NAME_PASSPORT_ID));
         AbiturientLogic.updateAbiturient(abiturient,old_passport_series,old_passport_id);
-        page=PATH_PAGE_MAIN;;
+        page=PATH_PAGE_MAIN;
+        request.setAttribute(PARAM_NAME_REDIRECT,PARAM_NAME_TRUE);
+        request.setAttribute(PARAM_NAME_REDIRECT_URL, PATH_REDIRECT_RESULT);
         return page;
     }
 }

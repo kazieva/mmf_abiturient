@@ -28,7 +28,8 @@ public class AddAbiturientCommand implements ActionCommand {
         System.out.println(abiturient.toString());
         AbiturientLogic.addAbiturient(abiturient);
         page=PATH_PAGE_MAIN;
-        //page="/result";
+        request.setAttribute(PARAM_NAME_REDIRECT,PARAM_NAME_TRUE);
+        request.setAttribute(PARAM_NAME_REDIRECT_URL, PATH_REDIRECT_RESULT);
         return page;
     }
 }

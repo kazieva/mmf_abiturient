@@ -10,9 +10,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class EditAbiturientCommand implements ActionCommand{
-
-    private static final String PARAM_NAME_PASSPORT_SERIES = "passport_series";
-    private static final String PARAM_NAME_PASSPORT_ID = "passport_id";
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
         String page = null;
@@ -22,10 +19,9 @@ public class EditAbiturientCommand implements ActionCommand{
         if (abiturient!=null){
             page=PATH_EDIT_ABITURIENT_PAGE;
         }
-        request.setAttribute("abiturient", abiturient);
+        request.setAttribute(PARAM_NAME_ABITURIENT, abiturient);
         List<Speciality> resultSpecialityList = SpecialityLogic.findAllSpeciality();
-        request.setAttribute("specialities", resultSpecialityList);
-
+        request.setAttribute(PARAM_NAME_SPECIALITIES, resultSpecialityList);
         return page;
     }
 }

@@ -15,6 +15,8 @@ public class AddSpecialityCommand implements ActionCommand {
         int recruitment_plan=Integer.parseInt(request.getParameter(PARAM_NAME_SPECIALITY_RECRUTMENT_PLAN));
         SpecialityLogic.addNewSpeciality(speciality_id, ru_name, en_name, recruitment_plan);
 
+        request.setAttribute(PARAM_NAME_REDIRECT,PARAM_NAME_TRUE);
+        request.setAttribute(PARAM_NAME_REDIRECT_URL, PATH_REDIRECT_RESULT_SPECIALITY);
         return page;
     }
 }

@@ -2,7 +2,6 @@ package by.epam.training.kazieva.controller;
 
 import by.epam.training.kazieva.command.ActionCommand;
 import by.epam.training.kazieva.command.factory.ActionFactory;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +15,12 @@ import java.sql.SQLException;
 @WebServlet("/")
 public class Controller extends HttpServlet {
     private static final String PATH_PAGE_LOGIN = "/jsp/login.jsp" ;
+    private static final String PATH_REDIRECT_URL="redirect_ulr";
+    private static final String PATH_REDIRECT = "redirect";
+    private static final String TRUE = "true";
+    private static final String COMMAND ="command";
+    private static final String USER_ROLE="user_role";
+
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         processRequest(request, response);
@@ -29,8 +34,8 @@ public class Controller extends HttpServlet {
         ActionFactory client = new ActionFactory();
         ActionCommand command = client.defineCommand(request);
         HttpSession session = request.getSession(false);
-        String user_role=(String)session.getAttribute("user_role");
-        String action = request.getParameter("command");
+        String user_role=(String)session.getAttribute(USER_ROLE);
+        String action = request.getParameter(COMMAND);
         if("login".equals(action)) {
             try {
                 page = command.execute(request);
@@ -38,42 +43,22 @@ public class Controller extends HttpServlet {
                 e.printStackTrace();
             }
         }else {
-            if (!(user_role+" role").equals("null role")) {
+            if ((user_role+" role").equals("null role")) {
+                page = PATH_PAGE_LOGIN;
+            } else {
                 try {
                     page = command.execute(request);
                 } catch (SQLException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-            } else {
-                page = PATH_PAGE_LOGIN;
             }
         }
-
-        if(request.getAttribute("redirect")=="true"){
-            System.out.println("is redirect");
-            response.sendRedirect(request.getAttribute("redirect_ulr").toString());
+        if(request.getAttribute(PATH_REDIRECT)==TRUE){
+            response.sendRedirect(request.getAttribute(PATH_REDIRECT_URL).toString());
         }
         else {
-            System.out.println("");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
             dispatcher.forward(request, response);
-
         }
-/*
-        if (page != null) {
-            if ("login".equals(action)||"add_abiturient".equals(action)||"delete_abiturient".equals(action)||"update_abiturient".equals(action)){
-                response.sendRedirect("Controller?command=result");
-            }else{
-            if("delete_speciality".equals(action)||"add_speciality".equals(action)){
-                response.sendRedirect("Controller?command=result_speciality");
-            }else{
-            if("registration".equals(action)||"update_user_role".equals(action)){
-                response.sendRedirect("Controller?command=all_users");
-            }
-            else {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
-                dispatcher.forward(request, response);
-            }}}
-        }*/
     }
 }
