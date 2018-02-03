@@ -27,8 +27,8 @@ public class AddAbiturientCommand implements ActionCommand {
         abiturient.setSpeciality_id(SpecialityLogic.getSpecialityId(request.getParameter(PARAM_NAME_SPECIALITY)));
         System.out.println(abiturient.toString());
         AbiturientLogic.addAbiturient(abiturient);
-        //page=PATH_PAGE_MAIN;
-        page="/result";
+        page=PATH_PAGE_MAIN;
+        //page="/result";
         return page;
     }
 }

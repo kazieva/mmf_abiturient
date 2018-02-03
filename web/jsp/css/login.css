@@ -496,7 +496,7 @@ a.button:hover {
     background-size: cover;
 }
 #slideshow .one {
-    background-image: url(logo1-0.png);
+    background-image: url("https://image.ibb.co/fHXoR6/logo1_0.png");
     background-repeat: no-repeat;
     background-position: 0% 50%;
 }

@@ -5,8 +5,8 @@
     <head>
         <title>MMF</title>
         <style>
-            <%@include file='css/style.css' %>
-            <%@include file='css/menu.css' %>
+            <%@include file='../../jsp/css/style.css' %>
+            <%@include file='../../jsp/css/menu.css' %>
          </style>
     </head>
     <body>
@@ -62,7 +62,7 @@
                         </thead>
                     </table>
                 </div>
-                <div class="tbl-content">
+                <div class="tbl-user-content">
                     <table cellpadding="0" cellspacing="0" border="0">
                         <tbody>
                             <c:forEach items="${requestScope.users}" var="user">
@@ -82,7 +82,7 @@
                 </div>
             </section>
             <c:if test="${sessionScope.user_role==\"admin\"}">
-                <a href="Controller?command=go_to_registration">
+                <a href="Controller?command=go_to_registration" class="abutton">
                     Registrate new user
                 </a>
             </c:if>

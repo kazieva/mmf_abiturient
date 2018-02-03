@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO extends AbstractDAO {
-    private static final Logger LOGGER = Logger.getLogger(UserDAO.class);
+    private static final Logger logger = Logger.getLogger(UserDAO.class);
     public User findUser(String login, String password, String key) throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        ResultSet result = null;
+        ResultSet result;
         User user = null;
         String query = "SELECT * FROM user WHERE login = \"" +login+"\" AND password=MD5('" + password + "') AND user.`key`=MD5(\""+key+"\");";
         try{
@@ -34,14 +34,14 @@ public class UserDAO extends AbstractDAO {
                     user.setKey(result.getString("key"));
                 }
             } catch (SQLException e) {
-                LOGGER.error(e);
+                logger.error(e);
             }
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during findUser", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -74,15 +74,15 @@ public class UserDAO extends AbstractDAO {
                     }while (result.next());
                 }
                 catch (SQLException e) {
-                    LOGGER.error(e);
+                    logger.error(e);
                 }
             }
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during getAllUsers", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -93,20 +93,19 @@ public class UserDAO extends AbstractDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        ResultSet result = null;
         String query = "INSERT INTO user (login, user.password, user.key, fname, sname) VALUES (\""+
                     login+"\", MD5('"+password+"'), MD5('"+key+"'), \""+fname+"\", \""+sname+"\");";
-        LOGGER.info(query);
+        logger.info(query);
         try{
             connection = pool.getConnection();
             statement = getPreparedStatement(connection, query);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during registrateUser", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -116,18 +115,17 @@ public class UserDAO extends AbstractDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        ResultSet result;
         String query = "UPDATE user SET user_role='"+role+"' WHERE login =\""+login+"\";";
         try{
             connection = pool.getConnection();
             statement = getPreparedStatement(connection, query);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during updateUserRole ", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);

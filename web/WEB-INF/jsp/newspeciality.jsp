@@ -4,8 +4,8 @@
 <html>
     <head>
         <style>
-            <%@include file='css/style.css' %>
-            <%@include file='css/menu.css' %>
+            <%@include file='../../jsp/css/style.css' %>
+            <%@include file='../../jsp/css/menu.css' %>
         </style>
     </head>
     <body>
@@ -47,13 +47,14 @@
             </ul>
         </nav>
         <main>
+            <div class="new_speciality">
             <h2 class="h"> NEW SPECIALITY</h2>
             <div class="inputForm">
                 <form method="POST" action="controller">
                     <input type="hidden" name="command" value="add_speciality"/>
                     <br>
                     <p>
-                        <input type="number" name="id" required placeholder="Speciality id"/>
+                        <input type="number" name="id" min = "1" required placeholder="Speciality id"/>
                     </p>
                     <p>
 
@@ -65,8 +66,9 @@
                     <p>
                         <input type="number"size="5" min = "1" name="recruitment_plan"  required placeholder="recruitment plan">
                     </p>
-                    <input type="submit" value="Add speciality" />
+                    <input type="submit" class="button" value="Add speciality" />
                 </form>
+            </div>
             </div>
         </main>
     </body>

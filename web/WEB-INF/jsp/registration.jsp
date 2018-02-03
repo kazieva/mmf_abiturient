@@ -4,8 +4,8 @@
 <html class=''>
     <head>
          <style>
-                <%@include file='css/login.css' %>
-                <%@include file='css/menu.css' %>
+                <%@include file='../../jsp/css/login.css' %>
+                <%@include file='../../jsp/css/menu.css' %>
          </style>
     </head>
     <body>
@@ -15,7 +15,11 @@
                 <div class="user">
                     <div class="form-wrap">
                         <div class="tabs">
-                            <h3 class="login-tab"><a class="log-in active" href="#login-tab-content"><span>Registration<span></a></h3>
+                            <h3 class="login-tab">
+                                <a class="log-in active" href="#login-tab-content">
+                                    <span>Registration</span>
+                                </a>
+                            </h3>
                         </div>
                         <div class="tabs-content">
                             <div id="login-tab-content" class="active">

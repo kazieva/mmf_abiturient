@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserLogic {
-    private static final Logger LOGGER = Logger.getLogger(UserLogic.class);
+    private static final Logger logger = Logger.getLogger(UserLogic.class);
     public static User findUser(String login, String password, String key) {
         User user = null;
         if(Validator.loginationValidation(login, password, key)){
@@ -16,10 +16,9 @@ public class UserLogic {
             try {
                 user = userDAO.findUser(login, password, key);
             } catch (DAOException e) {
-                LOGGER.error(e);
+                logger.error(e);
             }
         }
-        System.out.println(user+" logic");
         return user;
     }
     public static List<User> getAllUsers() {
@@ -28,7 +27,7 @@ public class UserLogic {
         try {
         resultUserList =userDAO.getAllUsers();
         } catch (DAOException e) {
-            LOGGER.error(e);
+            logger.error(e);
         }
         return resultUserList;
     }
@@ -39,7 +38,7 @@ public class UserLogic {
             try {
                 userDAO.registrateUser(login, password, key, fname, sname);
             } catch (DAOException e) {
-                LOGGER.error(e);
+                logger.error(e);
             }
         }
     }
@@ -50,7 +49,7 @@ public class UserLogic {
         try {
             userDAO.updateUserRole(login, user_role);
         } catch (DAOException e) {
-            LOGGER.error(e);
+            logger.error(e);
         }
     }
 }

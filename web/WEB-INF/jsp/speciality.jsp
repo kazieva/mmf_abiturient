@@ -5,8 +5,8 @@
     <head>
         <title>MMF</title>
         <style>
-            <%@include file='css/style.css' %>
-            <%@include file='css/menu.css' %>
+            <%@include file='../../jsp/css/style.css' %>
+            <%@include file='../../jsp/css/menu.css' %>
         </style>
     </head>
     <body>
@@ -65,7 +65,7 @@
                         </thead>
                     </table>
                 </div>
-                <div class="tbl-content">
+                <div class="tbl-spec-content">
                     <table cellpadding="0" cellspacing="0" border="0">
                         <tbody>
                             <c:forEach items="${requestScope.specialities}" var="speciality">
@@ -91,9 +91,10 @@
                     </table>
                 </div>
             </section>
-            <c:if test="${sessionScope.user_role==\"admin\"}">
-                <a href="/jsp/newspeciality.jsp">NEW SPECIALITY</a>
-            </c:if>
+
+                <c:if test="${sessionScope.user_role==\"admin\"}">
+                    <a href="Controller?command=go_to_new_speciality" class="abutton">NEW SPECIALITY</a>
+                </c:if>
         </main>
     </body>
 </html>

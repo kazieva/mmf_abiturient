@@ -5,8 +5,8 @@
     <head>
         <title>MMF</title>
         <style>
-            <%@include file='css/style.css' %>
-            <%@include file='css/menu.css' %>
+            <%@include file='../../jsp/css/style.css' %>
+            <%@include file='../../jsp/css/menu.css' %>
         </style>
     </head>
     <body>
@@ -48,6 +48,7 @@
             </ul>
         </nav>
         <main>
+            <div class="new_entity">
             <h1> New Abiturient</h1>
             <div class="inputForm">
                 <form method="POST" action="controller">
@@ -78,8 +79,9 @@
                         <input type="number" min = "20" max="100" size="5" name="language_certificate" required placeholder="балл по языку">
                         <input type="number" min = "0" max="100" size="5" name="school_certificate" required placeholder="балл аттестата">
                     </p>
-                    <input type="submit" value="Оформить" />
+                    <input type="submit" class="button" value="Оформить" />
                 </form>
+            </div>
             </div>
             <hr>
             <section>
@@ -119,7 +121,7 @@
                                     </td>
                                     <td>
                                         <a href="Controller?command=delete_abiturient&passport_id=${abiturient.passport_id}&passport_series=${abiturient.passport_series}">
-                                            X
+                                            x
                                         </a>
                                     </td>
                                 </tr>

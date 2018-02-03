@@ -9,14 +9,14 @@ import java.util.List;
 
 public class AbiturientLogic{
 
-    private static final Logger LOGGER = Logger.getLogger(AbiturientLogic.class);
+    private static final Logger logger = Logger.getLogger(AbiturientLogic.class);
     public static List <Abiturient> findAllAbiturient(){
         AbiturientDAO abiturientDAO = new AbiturientDAO();
         List<Abiturient> resultAbiturientsList = new ArrayList<>();
         try {
             resultAbiturientsList = abiturientDAO.findAllAbituriebt();
         } catch (DAOException e) {
-            LOGGER.error(e);
+            logger.error(e);
         }
         return resultAbiturientsList;
     }
@@ -25,7 +25,7 @@ public class AbiturientLogic{
         try {
             abiturientDAO.addAbiturient(abiturient);
         } catch (DAOException e) {
-            LOGGER.error(e);
+            logger.error(e);
         }
     }
     public  static void  deleteAbiturient(String passport_series, int passport_id){
@@ -33,7 +33,7 @@ public class AbiturientLogic{
         try {
             abiturientDAO.deleteAbiturient(passport_series, passport_id);
         } catch (DAOException e) {
-            LOGGER.error(e);
+            logger.error(e);
         }
 
     }
@@ -43,7 +43,7 @@ public class AbiturientLogic{
         try {
             abiturient = abiturientDAO.getAbiturient(passport_series,  passport_id);
         } catch (DAOException e) {
-            LOGGER.error(e);
+            logger.error(e);
         }
         return abiturient;
     }
@@ -52,7 +52,7 @@ public class AbiturientLogic{
         try {
             abiturientDAO.updateAbiturient(abiturient, old_passport_series, old_passport_id);
         } catch (DAOException e) {
-            LOGGER.error(e);
+            logger.error(e);
         }
     }/*
     public static int getCountOfAbitirients(){

@@ -4,8 +4,8 @@
 <html>
     <head>
         <style>
-            <%@include file='css/style.css' %>
-            <%@include file='css/menu.css' %>
+            <%@include file='../../jsp/css/style.css' %>
+            <%@include file='../../jsp/css/menu.css' %>
         </style>
     </head>
     <body>

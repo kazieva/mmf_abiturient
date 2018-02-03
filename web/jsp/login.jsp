@@ -14,9 +14,10 @@
                     <div id="slideshow">
                         <div class="one">
                             <h2>
-                                <span>MMM BSU</span>
+                                <span>MMF BSU</span>
                             </h2>
                             <p>Log in to get started</p>
+
                         </div>
                     </div>
                 </div>

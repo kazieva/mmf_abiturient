@@ -1,19 +1,21 @@
 package by.epam.training.kazieva.dao;
 
 import by.epam.training.kazieva.connect.WrapperConnection;
-import by.epam.training.kazieva.entity.Abiturient;
+import org.apache.log4j.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class AbstractDAO  {
+
+    private static final Logger logger = Logger.getLogger(AbstractDAO.class);
     public static PreparedStatement getPreparedStatement(WrapperConnection connection, String query) {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(query);
         } catch (SQLException exc) {
-    //        LOGGER.error(exc);
+            logger.error(exc);
         }
         return statement;
     }
@@ -24,7 +26,7 @@ public abstract class AbstractDAO  {
                 statement.close();
             }
         } catch (SQLException e) {
-       //     LOGGER.error("Impossible close statement\n" + e);
+            logger.error("Impossible close statement\n" + e);
         }
     }
 

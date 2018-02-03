@@ -15,7 +15,7 @@ import java.util.List;
 
 public class SpecialityDAO extends AbstractDAO {
     private static String lang = "ru";
-    private static final Logger LOGGER = Logger.getLogger(SpecialityDAO.class);
+    private static final Logger logger = Logger.getLogger(SpecialityDAO.class);
 
     public List<Speciality > findAllSpeciality() throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -42,11 +42,11 @@ public class SpecialityDAO extends AbstractDAO {
                 }while (resultSpeciality.next());
             }
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during findAllSpeciality ", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -68,11 +68,11 @@ public class SpecialityDAO extends AbstractDAO {
                 specialityId= result.getInt("speciality_id");
             }
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during getSpecialityId ", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -92,11 +92,11 @@ public class SpecialityDAO extends AbstractDAO {
             statement = getPreparedStatement(connection, query);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during deleteSpeciality ", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -114,11 +114,11 @@ public class SpecialityDAO extends AbstractDAO {
             statement = getPreparedStatement(connection, query);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during addSpeciality ", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -136,11 +136,11 @@ public class SpecialityDAO extends AbstractDAO {
             statement = getPreparedStatement(connection, query);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during addSpecialityTranslate ", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);

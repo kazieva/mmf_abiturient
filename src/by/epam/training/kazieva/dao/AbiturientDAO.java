@@ -15,15 +15,15 @@ import java.util.List;
 
 public class AbiturientDAO extends AbstractDAO{
 
-    private static final Logger LOGGER = Logger.getLogger(AbiturientDAO.class);
+    private static final Logger logger = Logger.getLogger(AbiturientDAO.class);
     public List<Abiturient> findAllAbituriebt() throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        ResultSet resultAbiturient = null;
+        ResultSet resultAbiturient;
         List<Abiturient> resultAbiturientsList = new ArrayList<>();
         String query = "SELECT * FROM abiturient ORDER BY (school_certificate+math_certificate+physics_certificate+language_certificate)  DESC;";
-        LOGGER.info(query);
+        logger.info(query);
         try{
             connection = pool.getConnection();
             statement = getPreparedStatement(connection, query);
@@ -44,14 +44,14 @@ public class AbiturientDAO extends AbstractDAO{
                     res.setLanguage_certificate(resultAbiturient.getByte("language_certificate"));
                     resultAbiturientsList.add(res);
                 }while (resultAbiturient.next());
-                LOGGER.info(resultAbiturientsList);
+                logger.info(resultAbiturientsList);
             }
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during findAllAbituriebt", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -63,7 +63,7 @@ public class AbiturientDAO extends AbstractDAO{
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        ResultSet resultAbiturient = null;
+        ResultSet resultAbiturient;
         Abiturient abiturient = new Abiturient();
         String query="SELECT * FROM abiturient WHERE passport_series=\""+passport_series+"\" AND passport_id="+passport_id+";";
         try{
@@ -83,14 +83,14 @@ public class AbiturientDAO extends AbstractDAO{
                 abiturient.setMath_certificate(resultAbiturient.getByte("math_certificate"));
                 abiturient.setPhysics_certificate(resultAbiturient.getByte("physics_certificate"));
                 abiturient.setLanguage_certificate(resultAbiturient.getByte("language_certificate"));
-                LOGGER.info(resultAbiturient);
+                logger.info(resultAbiturient);
             }
         } catch (SQLException e) {
             throw new DAOException("Error during get abiturient ", e);
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -104,17 +104,17 @@ public class AbiturientDAO extends AbstractDAO{
         String query="INSERT INTO abiturient (passport_series, passport_id, speciality_id, fname, sname, patronymic, phone, school_certificate, math_certificate, physics_certificate, language_certificate) VALUES " +
                 "(\""+abiturient.getPassport_series()+"\", "+abiturient.getPassport_id()+", "+abiturient.getSpeciality_id()+", \""+ abiturient.getFname()+"\", \""+abiturient.getSname()+"\", \""+abiturient.getPatronymic()+"\", \"" +abiturient.getPhone()+"\", "+abiturient.getSchool_certificate()+ ", "+abiturient.getMath_certificate()+", "+abiturient.getPhysics_certificate()+", "+abiturient.getLanguage_certificate()+");";
 
-        LOGGER.info(query);
+        logger.info(query);
         try{
             connection = pool.getConnection();
             statement = getPreparedStatement(connection, query);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during add abiturient", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -130,11 +130,11 @@ public class AbiturientDAO extends AbstractDAO{
             statement = getPreparedStatement(connection, query);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during delete abiturient", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -149,17 +149,17 @@ public class AbiturientDAO extends AbstractDAO{
                 "school_certificate="+abiturient.getSchool_certificate()+", math_certificate="+abiturient.getMath_certificate()+", "+
                 "physics_certificate="+abiturient.getPhysics_certificate()+", language_certificate="+abiturient.getLanguage_certificate()+
                 " WHERE passport_series=\""+old_passport_series+"\" AND passport_id="+old_passport_id+";";
-        LOGGER.info(query);
+        logger.info(query);
         try{
             connection = pool.getConnection();
             statement = getPreparedStatement(connection, query);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during updating abiturient ", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);
@@ -176,11 +176,11 @@ public class AbiturientDAO extends AbstractDAO{
             statement = getPreparedStatement(connection, query);
             result = statement.executeQuery();
         } catch (ConnectionPoolException e) {
-            LOGGER.error(e);
+            logger.error(e);
         } catch (SQLException e) {
             throw new DAOException("Error during getCountOfAbitirients", e);
         } catch (Exception e) {
-            LOGGER.error(e);
+            logger.error(e);
         } finally {
             close(statement);
             pool.releaseConnection(connection);

@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpecialityLogic {
-    private static final Logger LOGGER = Logger.getLogger(SpecialityLogic.class);
+    private static final Logger logger = Logger.getLogger(SpecialityLogic.class);
     public static List<Speciality> findAllSpeciality(){
         SpecialityDAO specialityDAO = new SpecialityDAO();
         List<Speciality > resultSpecialityList = new ArrayList<>();
         try {
             resultSpecialityList=specialityDAO.findAllSpeciality();
         } catch (SQLException e) {
-            LOGGER.error(e);
+            logger.error(e);
         }
         return resultSpecialityList;
     }
@@ -26,7 +26,7 @@ public class SpecialityLogic {
         try {
             specialityId=specialityDAO.getSpecialityId(specialityName);
         } catch (SQLException e) {
-            LOGGER.error(e);
+            logger.error(e);
         }
         return specialityId;
     }
@@ -35,7 +35,7 @@ public class SpecialityLogic {
         try {
             specialityDAO.deleteSpeciality(id);
         } catch (DAOException e) {
-            LOGGER.error(e);
+            logger.error(e);
         }
     }
     public static void addNewSpeciality(int speciality_id, String ru_name, String en_name, int recruitment_plan ){
@@ -46,7 +46,7 @@ public class SpecialityLogic {
                 specialityDAO.addSpecialityTranslate(speciality_id, "ru", ru_name);
                 specialityDAO.addSpecialityTranslate(speciality_id, "en", en_name);
             } catch (DAOException e) {
-                LOGGER.error(e);
+                logger.error(e);
             }
         }
     }

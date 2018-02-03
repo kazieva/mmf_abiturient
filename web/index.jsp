@@ -2,13 +2,13 @@
          pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-<head>
-  <title>$Title$</title>
-</head>
-<body>
-<jsp:forward page="/jsp/login.jsp"></jsp:forward>
-<a href="jsp/login.jsp">
-  Log in
-</a>
-</body>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <c:if test="${sessionScope.user_role==\"admin\"}">
+      <jsp:forward page="/WEB-INF/jsp/emptypage.jsp"></jsp:forward>
+    </c:if>
+    <jsp:forward page="/jsp/login.jsp"></jsp:forward>
+  </body>
 </html>

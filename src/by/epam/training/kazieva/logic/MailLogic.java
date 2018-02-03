@@ -1,17 +1,23 @@
 package by.epam.training.kazieva.logic;
 
+import org.apache.log4j.Logger;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Date;
 import java.util.Properties;
 
 public class MailLogic {
+
+    private static final Logger logger = Logger.getLogger(MailLogic.class);
     private static final String HOST ="smtp.gmail.com";
     private static final String USER="mmf.abiturient@gmail.com";
     private static final String PASS="mmf.abiturient2018";
     private static final String FROM="mmf.abiturient@gmail.com";
     private static final String SUBJECT="REGISTRATIN IN MMF ABTURUEN SERVICE";
     private static final String TRUE="true";
+    private static final String PORT = "587";
+    private static final String TRUST = "smtp.gmail.com";
 
     public static void sendRegistratedEmail(String email, String password, String key, String fname){
         String to = email;
@@ -23,11 +29,10 @@ public class MailLogic {
         boolean sessionDebug=false;
 
         Properties properties = System.getProperties();
-
         properties.put("mail.smtp.starttls.enable",TRUE);
-        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        properties.put("mail.smtp.ssl.trust", TRUST);
         properties.put("mail.smtp.host", HOST);
-        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.port", PORT);
         properties.put("mail.smtp.auth",TRUE);
         properties.put("mail.smtp.starttls.required",TRUE);
 
@@ -46,11 +51,12 @@ public class MailLogic {
             tr.connect(HOST,USER,PASS);
             tr.sendMessage(message, message.getAllRecipients());
             tr.close();
-            System.out.println("send good");
+            logger.info("send good");
         } catch (NoSuchProviderException e) {
+            logger.error(e);
             e.printStackTrace();
         } catch (MessagingException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 }

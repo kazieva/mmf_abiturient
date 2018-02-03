@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 
 public class ActionFactory {
 
-    private static final Logger LOGGER = Logger.getLogger(ActionFactory.class);
+    private static final Logger logger = Logger.getLogger(ActionFactory.class);
     public ActionCommand defineCommand(HttpServletRequest request) {
         ActionCommand current = new EmptyCommand();
         String action = request.getParameter("command");
-        LOGGER.info(action);
+        logger.info(action);
         if (action == null || action.isEmpty()) {
             return current;
         }

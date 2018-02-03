@@ -51,6 +51,11 @@ public enum CommandEnum {
             this.command= new ResultSpecialityComand();
         }
     },
+    GO_TO_NEW_SPECIALITY{
+        {
+            this.command=new GoToNewSpecialityCommand();
+        }
+    },
     ADD_SPECIALITY{
         {
             this.command= new AddSpecialityCommand();
