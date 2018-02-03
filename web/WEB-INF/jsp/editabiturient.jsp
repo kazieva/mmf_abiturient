@@ -47,7 +47,8 @@
             </ul>
         </nav>
         <main>
-            <h2 class="h"> Редактировать заявку</h2>
+            <div class="new_entity">
+            <h1> Edit abiturient</h1>
                 <div class="inputForm">
                     <form method="POST" action="controller">
                         <input type="hidden" name="command" value="update_abiturient"/>
@@ -80,15 +81,16 @@
                             <input type="number" min = "0" max="100" size="5" name="new_school_certificate" value="${abiturient.school_certificate}" required placeholder="балл аттестата">
                         </p>
                         <p>
-                            <a href="Controller?command=delete_abiturient&passport_id=${abiturient.passport_id}&passport_series=${abiturient.passport_series}">
+                            <a href="Controller?command=delete_abiturient&passport_id=${abiturient.passport_id}&passport_series=${abiturient.passport_series}" class="abutton">
                                Удалить
                             </a>
                         </p>
-                        <input type="submit" value="Изменить" />
+                        <input type="submit" class="button" value="Изменить" />
                     </form>
                 </div>
             </div>
             <hr>
+
         </main>
     </body>
 </html>

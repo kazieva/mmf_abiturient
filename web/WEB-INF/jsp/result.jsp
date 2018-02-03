@@ -74,10 +74,10 @@
                         </select>
                     </p>
                     <p>
-                        <input type="number" min = "15" max="100" size="5" name="math_certificate" required placeholder="балл по математике">
-                        <input type="number" min = "15" max="100" size="5" name="physics_certificate" required placeholder="балл по физике">
-                        <input type="number" min = "20" max="100" size="5" name="language_certificate" required placeholder="балл по языку">
-                        <input type="number" min = "0" max="100" size="5" name="school_certificate" required placeholder="балл аттестата">
+                        <input type="number" min = "15" max="100" size="5" name="math_certificate" required placeholder="math">
+                        <input type="number" min = "15" max="100" size="5" name="physics_certificate" required placeholder="physics">
+                        <input type="number" min = "20" max="100" size="5" name="language_certificate" required placeholder="language">
+                        <input type="number" min = "0" max="100" size="5" name="school_certificate" required placeholder="school">
                     </p>
                     <input type="submit" class="button" value="Оформить" />
                 </form>

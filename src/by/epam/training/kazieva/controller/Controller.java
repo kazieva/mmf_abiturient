@@ -49,6 +49,17 @@ public class Controller extends HttpServlet {
             }
         }
 
+        if(request.getAttribute("redirect")=="true"){
+            System.out.println("is redirect");
+            response.sendRedirect(request.getAttribute("redirect_ulr").toString());
+        }
+        else {
+            System.out.println("");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
+            dispatcher.forward(request, response);
+
+        }
+/*
         if (page != null) {
             if ("login".equals(action)||"add_abiturient".equals(action)||"delete_abiturient".equals(action)||"update_abiturient".equals(action)){
                 response.sendRedirect("Controller?command=result");
@@ -63,6 +74,6 @@ public class Controller extends HttpServlet {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
                 dispatcher.forward(request, response);
             }}}
-        }
+        }*/
     }
 }

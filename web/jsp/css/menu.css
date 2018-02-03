@@ -19,11 +19,6 @@ main .helper span {
   display: block;
 }
 .menu {
-/*
-  background: -moz-linear-gradient(48deg, rgba(42,46,54,1) 0%, rgba(97,107,125,1) 100%);
-  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(42,46,54,1)), color-stop(100%, rgba(97,107,125,1)));
-  background: -webkit-linear-gradient(48deg, rgba(42,46,54,1) 0%, rgba(97,107,125,1) 100%);
-  background: linear-gradient(42deg, rgba(42,46,54,1) 0%, rgba(97,107,125,1) 100%);*/
   background: #222E40;
   height: 100vh;
   width: 240px;
@@ -53,7 +48,8 @@ main .helper span {
 .menu ul {
   list-style: none;
   padding: 0.5em 0;
-  margin: 0;
+  text-align: center;
+  padding: .2em 0em;
 }
 .menu ul li {
   padding: 0.5em 1em 0.5em 3em;
@@ -63,6 +59,9 @@ main .helper span {
   background-size: auto 20px;
   transition: all 0.15s linear;
   cursor: pointer;
+  color: #999;
+  font: 16px/26px "Raleway", sans-serif;
+
 }
 .menu ul li.icon-dashboard {
   background-image: url("http://www.entypo.com/images//gauge.svg");
@@ -81,6 +80,8 @@ main .helper span {
 }
 .menu ul li:hover {
   background-color: rgba(0, 0, 0, 0.1);
+
+  color: #B6EDE3;
 }
 .menu ul li:focus {
   outline: none;
@@ -117,11 +118,13 @@ main .helper span {
   }
   .menu ul li {
     height: 60px;
+
     background-position: center center;
     background-size: 30px auto;
     position: relative;
   }
   .menu ul li span {
+    font: 16px/26px "Raleway", sans-serif;
     opacity: 0;
     position: absolute;
     background: rgba(0, 0, 0, 0.5);
@@ -154,6 +157,8 @@ main .helper span {
     padding-left: 0;
   }
   .menu {
+
+    font: 16px/26px "Raleway", sans-serif;
     width: 230px;
     box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);
     transform: translate3d(-230px, 0, 0);

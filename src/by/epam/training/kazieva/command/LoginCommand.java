@@ -23,15 +23,17 @@ public class LoginCommand implements ActionCommand{
             System.out.println(user+" comand");
             session.setAttribute("user", user);
             page=PATH_PAGE_MAIN;
-
+/*
             List<Abiturient > resultAbiturientsList = AbiturientLogic.findAllAbiturient();
             request.setAttribute("abiturients", resultAbiturientsList);
             System.out.println(resultAbiturientsList);
 
             List<Speciality> resultSpecialityList = SpecialityLogic.findAllSpeciality();
             request.setAttribute("specialities", resultSpecialityList);
-
+*/
             session.setAttribute("user_role", user.getRole());
+            request.setAttribute("redirect","true");
+            request.setAttribute("redirect_ulr", "Controller?command=result");
         }
         else {
 

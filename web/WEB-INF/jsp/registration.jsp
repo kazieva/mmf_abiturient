@@ -9,14 +9,13 @@
          </style>
     </head>
     <body>
-
         <div class="login">
             <div class="wrap">
                 <div class="user">
                     <div class="form-wrap">
                         <div class="tabs">
                             <h3 class="login-tab">
-                                <a class="log-in active" href="#login-tab-content">
+                                <a class="log-in active" href="/    ">
                                     <span>Registration</span>
                                 </a>
                             </h3>
