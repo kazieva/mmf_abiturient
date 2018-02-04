@@ -1,5 +1,6 @@
 package by.epam.training.kazieva.logic;
 
+import by.epam.training.kazieva.exception.LogicException;
 import org.apache.log4j.Logger;
 
 import javax.mail.*;
@@ -19,7 +20,7 @@ public class MailLogic {
     private static final String PORT = "587";
     private static final String TRUST = "smtp.gmail.com";
 
-    public static void sendRegistratedEmail(String email, String password, String key, String fname){
+    public static void sendRegistratedEmail(String email, String password, String key, String fname) throws LogicException {
         String to = email;
         String text ="Hello, "+fname+"!"+"\n" +
                 "Your login is "+email+". \n"+
@@ -54,9 +55,10 @@ public class MailLogic {
             logger.info("send good");
         } catch (NoSuchProviderException e) {
             logger.error(e);
-            e.printStackTrace();
+            throw new LogicException("Error NoSuchProviderException email");
         } catch (MessagingException e) {
             logger.error(e);
+            throw new LogicException("Error MessagingException email");
         }
     }
 }
