@@ -18,7 +18,7 @@ public class AbiturientLogic{
             resultAbiturientsList = abiturientDAO.findAllAbituriebt();
         } catch (DAOException e) {
             logger.error(e);
-            throw new LogicException("Error find all abiturients");
+            throw new LogicException("Error find all abiturients", e);
         }
         return resultAbiturientsList;
     }
@@ -28,7 +28,7 @@ public class AbiturientLogic{
             abiturientDAO.addAbiturient(abiturient);
         } catch (DAOException e) {
             logger.error(e);
-            throw new LogicException("Error add abiturient");
+            throw new LogicException("Error add abiturient", e);
         }
     }
     public  static void  deleteAbiturient(String passport_series, int passport_id) throws LogicException {
@@ -37,7 +37,7 @@ public class AbiturientLogic{
             abiturientDAO.deleteAbiturient(passport_series, passport_id);
         } catch (DAOException e) {
             logger.error(e);
-            throw new LogicException("Error delete abiturient");
+            throw new LogicException("Error delete abiturient", e);
         }
 
     }
@@ -48,7 +48,7 @@ public class AbiturientLogic{
             abiturient = abiturientDAO.getAbiturient(passport_series,  passport_id);
         } catch (DAOException e) {
             logger.error(e);
-            throw new LogicException("Error get abiturient");
+            throw new LogicException("Error get abiturient", e);
         }
         return abiturient;
     }
@@ -58,7 +58,7 @@ public class AbiturientLogic{
             abiturientDAO.updateAbiturient(abiturient, old_passport_series, old_passport_id);
         } catch (DAOException e) {
             logger.error(e);
-            throw new LogicException("Error update abiturient");
+            throw new LogicException("Error update abiturient", e);
         }
     }/*
     public static int getCountOfAbitirients(){

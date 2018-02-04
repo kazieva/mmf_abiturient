@@ -55,10 +55,10 @@ public class MailLogic {
             logger.info("send good");
         } catch (NoSuchProviderException e) {
             logger.error(e);
-            throw new LogicException("Error NoSuchProviderException email");
+            throw new LogicException("Error NoSuchProviderException email", e);
         } catch (MessagingException e) {
             logger.error(e);
-            throw new LogicException("Error MessagingException email");
+            throw new LogicException("Error MessagingException email", e);
         }
     }
 }

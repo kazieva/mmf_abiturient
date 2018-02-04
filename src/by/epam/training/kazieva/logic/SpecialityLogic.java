@@ -18,7 +18,7 @@ public class SpecialityLogic {
             resultSpecialityList=specialityDAO.findAllSpeciality();
         } catch (SQLException e) {
             logger.error(e);
-            throw new LogicException("Error find all speciality");
+            throw new LogicException("Error find all speciality", e);
         }
         return resultSpecialityList;
     }
@@ -29,7 +29,7 @@ public class SpecialityLogic {
             specialityId=specialityDAO.getSpecialityId(specialityName);
         } catch (SQLException e) {
             logger.error(e);
-            throw new  LogicException("Error get speciality id");
+            throw new  LogicException("Error get speciality id", e);
         }
         return specialityId;
     }
@@ -39,7 +39,7 @@ public class SpecialityLogic {
             specialityDAO.deleteSpeciality(id);
         } catch (DAOException e) {
             logger.error(e);
-            throw new  LogicException("Error delete speciality");
+            throw new  LogicException("Error delete speciality", e);
         }
     }
     public static void addNewSpeciality(int speciality_id, String ru_name, String en_name, int recruitment_plan ) throws LogicException {
@@ -51,7 +51,7 @@ public class SpecialityLogic {
                 specialityDAO.addSpecialityTranslate(speciality_id, "en", en_name);
             } catch (DAOException e) {
                 logger.error(e);
-                throw new  LogicException("Error add new speciality");
+                throw new  LogicException("Error add new speciality", e);
             }
         }
     }

@@ -18,7 +18,7 @@ public class UserLogic {
                 user = userDAO.findUser(login, password, key);
             } catch (DAOException e) {
                 logger.error(e);
-                throw new  LogicException("Error find user");
+                throw new  LogicException("Error find user", e);
             }
         }
         return user;
@@ -30,7 +30,7 @@ public class UserLogic {
         resultUserList =userDAO.getAllUsers();
         } catch (DAOException e) {
             logger.error(e);
-            throw new  LogicException("Error get all users");
+            throw new  LogicException("Error get all users", e);
         }
         return resultUserList;
     }
@@ -42,7 +42,7 @@ public class UserLogic {
                 userDAO.registrateUser(login, password, key, fname, sname);
             } catch (DAOException e) {
                 logger.error(e);
-                throw new LogicException("Error registation");
+                throw new LogicException("Error registation", e);
             }
         }
     }
@@ -54,7 +54,7 @@ public class UserLogic {
             userDAO.updateUserRole(login, user_role);
         } catch (DAOException e) {
             logger.error(e);
-            throw new  LogicException("Error change user role");
+            throw new  LogicException("Error change user role", e);
         }
     }
 }

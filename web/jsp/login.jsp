@@ -25,7 +25,7 @@
                     <div class="form-wrap">
                         <div class="tabs">
                             <h3 class="login-tab">
-                                <a class="log-in active" href="login.jsp">
+                                <a class="log-in active" href="/">
                                     <span>Login</span>
                                 </a>
                             </h3>
