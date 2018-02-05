@@ -2,6 +2,10 @@
          pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="user" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="resources.message" var="message"/>
 <html>
     <head>
         <title>MMF</title>
@@ -44,9 +48,18 @@
                         <span>logout</span>
                     </li>
                 </a>
+                <li>
+                    <form name="lang" method="post" action="controller">
+                        <input type="hidden" name="command" value="locale"/>
+                        <input type="hidden" name="old_command" value="Controller?command=result"/>
+                        <input type="submit" name="lang" value="RU">
+                        <input type="submit" name="lang" value="EN">
+                    </form>
+                </li>
             </ul>
         </nav>
         <main>
+            <fmt:message key="message.name" bundle="${message}"/>
             <div class="new_entity">
             <h1> New Abiturient</h1>
             <div class="inputForm">

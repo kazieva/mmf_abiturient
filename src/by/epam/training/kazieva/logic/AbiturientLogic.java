@@ -13,7 +13,7 @@ public class AbiturientLogic{
     private static final Logger logger = Logger.getLogger(AbiturientLogic.class);
     public static List <Abiturient> findAllAbiturient() throws LogicException {
         AbiturientDAO abiturientDAO = new AbiturientDAO();
-        List<Abiturient> resultAbiturientsList = new ArrayList<>();
+        List<Abiturient> resultAbiturientsList;
         try {
             resultAbiturientsList = abiturientDAO.findAllAbituriebt();
         } catch (DAOException e) {

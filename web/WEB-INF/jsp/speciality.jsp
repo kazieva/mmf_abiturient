@@ -44,6 +44,14 @@
                         <span>logout</span>
                     </li>
                 </a>
+                <li>
+                    <form name="lang" method="post" action="controller">
+                        <input type="hidden" name="command" value="locale"/>
+                        <input type="hidden" name="old_command" value="Controller?command=result_speciality"/>
+                        <input type="submit" name="lang" value="RU">
+                        <input type="submit" name="lang" value="EN">
+                    </form>
+                </li>
             </ul>
         </nav>
         <main>

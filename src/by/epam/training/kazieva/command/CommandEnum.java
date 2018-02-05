@@ -1,6 +1,11 @@
 package by.epam.training.kazieva.command;
 
 public enum CommandEnum {
+    LOCALE {
+        {
+            this.command = new LocaleCommand();
+        }
+    },
     LOGIN {
         {
             this.command = new LoginCommand();

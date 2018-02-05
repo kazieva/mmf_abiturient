@@ -39,4 +39,6 @@ interface ParamConstant {
     String PARAM_NAME_REDIRECT_URL="redirect_ulr";
     String PARAM_NAME_REDIRECT = "redirect";
     String PARAM_NAME_TRUE = "true";
+    String PARAM_NAME_LOCALE = "lang";
+    String PARAM_NAME_OLD_COMMAND="old_command";
 }
