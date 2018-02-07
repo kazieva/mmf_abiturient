@@ -34,6 +34,7 @@ public class LoginCommand implements ActionCommand{
             session.setAttribute(PARAM_NAME_USER_ROLE, user.getRole());
             request.setAttribute(PARAM_NAME_REDIRECT,PARAM_NAME_TRUE);
             request.setAttribute(PARAM_NAME_REDIRECT_URL, PATH_REDIRECT_RESULT);
+            request.getSession().setAttribute(PARAM_NAME_LOCALE, "en-En");
         }
         else {
             request.setAttribute("errorLoginPassMessage","Incorrect login or password.");

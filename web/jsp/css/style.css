@@ -192,6 +192,54 @@ td{
     box-shadow: 0px 0px 37px -9px rgba(0,0,0,0.75);
     border: none;
 }
+.langbutton{
+    height: auto;
+    margin-top: 1.5em;
+    padding: .8rem 2.0rem;
+    line-height: normal;
+    text-transform: uppercase;
+    font-family: 'Proxima Nova', sans-serif;
+    font-weight: 200;
+    letter-spacing: 0;
+    text-decoration: none;
+    z-index: 5;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    color: #fff;
+    border-radius: 0px 30px 30px 0px;
+    -webkit-box-shadow: 0px 0px 17px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 17px -9px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 17px -9px rgba(0,0,0,0.75);
+    border: none;
+}
+.langbuttonLeft{
+    height: auto;
+    padding: .8rem 2.0rem;
+    line-height: normal;
+    text-transform: uppercase;
+    font-family: 'Proxima Nova', sans-serif;
+    font-weight: 200;
+    letter-spacing: 0;
+    text-decoration: none;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    color: #fff;
+    border-radius: 30px 0px 0px 30px;
+    -webkit-box-shadow: 0px 0px 17px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 17px -9px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 17px -9px rgba(0,0,0,0.75);
+    border: none;
+}
+.langbuttonLeft:hover{
+    color: #B6EDE3;
+}
+.langbutton:hover{
+    color: #B6EDE3;
+}
 .abutton:hover{
     color: #B6EDE3;
 }
