@@ -61,7 +61,7 @@
                 <li>
                     <form name="lang" method="post" action="controller">
                         <input type="hidden" name="command" value="locale"/>
-                        <input type="hidden" name="old_command" value="Controller?command=result"/>
+                        <input type="hidden" name="old_command" value="Controller?command=all_users"/>
                         <input class="langbuttonLeft" type="submit" name="lang" value="RU">
                         <input class="langbutton" type="submit" name="lang" value="EN">
                     </form>
@@ -70,14 +70,16 @@
         </nav>
         <main>
             <section>
-                <h1>ALL USERS</h1>
+                <h1>
+                    <fmt:message key="message.usersTitle" bundle="${message}"/>
+                </h1>
                 <div class="tbl-header">
                     <table cellpadding="0" cellspacing="0" border="0">
                         <thead>
                         <tr>
-                            <td>Фамилия</td>
-                            <td>Имя</td>
-                            <td>Роль </td>
+                            <td><fmt:message key="message.usersSname" bundle="${message}"/></td>
+                            <td><fmt:message key="message.usersFName" bundle="${message}"/></td>
+                            <td><fmt:message key="message.usersRole" bundle="${message}"/></td>
                             <td>  </td>
                         </tr>
                         </thead>
@@ -93,7 +95,7 @@
                                     <td>${user.role}</td>
                                     <td>
                                         <a href="Controller?command=update_user_role&login=${user.login}&user_role=${user.role}">
-                                            изменить роль
+                                            <fmt:message key="message.usersUpdateRole" bundle="${message}"/>
                                         </a>
                                     </td>
                                 </tr>
@@ -104,7 +106,7 @@
             </section>
             <c:if test="${sessionScope.user_role==\"admin\"}">
                 <a href="Controller?command=go_to_registration" class="abutton">
-                    Registrate new user
+                    <fmt:message key="message.usersRegistateNewUser" bundle="${message}"/>
                 </a>
             </c:if>
         </main>

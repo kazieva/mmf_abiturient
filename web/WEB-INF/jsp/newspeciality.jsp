@@ -60,7 +60,7 @@
                 <li>
                     <form name="lang" method="post" action="controller">
                         <input type="hidden" name="command" value="locale"/>
-                        <input type="hidden" name="old_command" value="Controller?command=result"/>
+                        <input type="hidden" name="old_command" value="Controller?command=go_to_new_speciality"/>
                         <input class="langbuttonLeft" type="submit" name="lang" value="RU">
                         <input class="langbutton" type="submit" name="lang" value="EN">
                     </form>
@@ -69,27 +69,29 @@
         </nav>
         <main>
             <div class="new_speciality">
-            <h2 class="h"> NEW SPECIALITY</h2>
-            <div class="inputForm">
-                <form method="POST" action="controller">
-                    <input type="hidden" name="command" value="add_speciality"/>
-                    <br>
-                    <p>
-                        <input type="number" name="id" min = "1" required placeholder="Speciality id"/>
-                    </p>
-                    <p>
+                <h2 class="h">
+                    <fmt:message key="message.allSpecielitiesButtonNewSpeciality" bundle="${message}"/>
+                </h2>
+                <div class="inputForm">
+                    <form method="POST" action="controller">
+                        <input type="hidden" name="command" value="add_speciality"/>
+                        <br>
+                        <p>
+                            <input type="number" name="id" min = "1" required placeholder="<fmt:message key="message.specielitiesSpecialityID" bundle="${message}"/>"/>
+                        </p>
+                        <p>
 
-                        <input type="text" name="en_speciality_name" required placeholder="Name on english"/>
-                    </p>
-                    <p>
-                        <input type="text" name="ru_speciality_name" required placeholder="Name on russial"/>
-                    </p>
-                    <p>
-                        <input type="number"size="5" min = "1" name="recruitment_plan"  required placeholder="recruitment plan">
-                    </p>
-                    <input type="submit" class="button" value="Add speciality" />
-                </form>
-            </div>
+                            <input type="text" name="en_speciality_name" required placeholder="<fmt:message key="message.newSpecialityEnglishName" bundle="${message}"/>"/>
+                        </p>
+                        <p>
+                            <input type="text" name="ru_speciality_name" required placeholder="<fmt:message key="message.newSpecialityRussianName" bundle="${message}"/>"/>
+                        </p>
+                        <p>
+                            <input type="number"size="5" min = "1" name="recruitment_plan"  required placeholder="<fmt:message key="message.specielitiesTableRecruitmentPlan" bundle="${message}"/>">
+                        </p>
+                        <input type="submit" class="button" value="<fmt:message key="message.newSpecialityButton" bundle="${message}"/>" />
+                    </form>
+                </div>
             </div>
         </main>
     </body>

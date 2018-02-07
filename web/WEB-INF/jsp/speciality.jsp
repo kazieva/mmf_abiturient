@@ -61,7 +61,7 @@
             <li>
                 <form name="lang" method="post" action="controller">
                     <input type="hidden" name="command" value="locale"/>
-                    <input type="hidden" name="old_command" value="Controller?command=result"/>
+                    <input type="hidden" name="old_command" value="Controller?command=result_speciality"/>
                     <input class="langbuttonLeft" type="submit" name="lang" value="RU">
                     <input class="langbutton" type="submit" name="lang" value="EN">
                 </form>
@@ -70,14 +70,16 @@
     </nav>
         <main>
             <section>
-                <h1>All Specialities</h1>
+                <h1>
+                    <fmt:message key="message.allSpecielitiesTitle" bundle="${message}"/>
+                </h1>
                 <div class="tbl-header">
                     <table cellpadding="0" cellspacing="0" border="0">
                         <thead>
                             <tr>
-                                <td>ID специальности</td>
-                                <td>Название</td>
-                                <td>План приема</td>
+                                <td><fmt:message key="message.specielitiesTableSpecialityID" bundle="${message}"/></td>
+                                <td><fmt:message key="message.specielitiesTableSpecialityName" bundle="${message}"/></td>
+                                <td><fmt:message key="message.specielitiesTableRecruitmentPlan" bundle="${message}"/></td>
                                 <c:if test="${sessionScope.user_role==\"admin\"}">
                                     <td>  </td>
                                     <td>  </td>
@@ -97,7 +99,7 @@
                                     <c:if test="${sessionScope.user_role==\"admin\"}">
                                         <td>
                                             <a href="Controller?command=edit_speciality&id=${speciality.id}">
-                                                Edit
+                                                <fmt:message key="message.editButton" bundle="${message}"/>
                                             </a>
                                         </td>
                                         <td>
@@ -114,7 +116,7 @@
             </section>
 
                 <c:if test="${sessionScope.user_role==\"admin\"}">
-                    <a href="Controller?command=go_to_new_speciality" class="abutton">NEW SPECIALITY</a>
+                    <a href="Controller?command=go_to_new_speciality" class="abutton"><fmt:message key="message.allSpecielitiesButtonNewSpeciality" bundle="${message}"/></a>
                 </c:if>
         </main>
     </body>

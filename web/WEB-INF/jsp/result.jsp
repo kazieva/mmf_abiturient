@@ -70,54 +70,58 @@
         </nav>
         <main>
             <div class="new_entity">
-            <h1> New Abiturient</h1>
-            <div class="inputForm">
-                <form method="POST" action="controller">
-                    <input type="hidden" name="command"  value="add_abiturient"/>
-                    <br>
-                    <p>
-                        <input type="text" name="passport_series" required placeholder="Серия паспорта"/>
-                        <input type="number" name="passport_id" required placeholder="Номер паспорта"/>
-                    </p>
-                    <p>
-                        <input type="text" name="fname" required placeholder="Имя"/>
-                        <input type="text" name="sname" required placeholder="Фамилия"/>
-                        <input type="text" name="patronymic" placeholder="Отчество"/>
-                    </p>
-                    <p>
-                        <input name="phone" name="phone" type="text" placeholder="Телефон"/>
-                    </p>
-                    <p>
-                        <select  name="speciality">
-                            <c:forEach items="${requestScope.specialities}" var="speciality">
-                                <option>${speciality.speciality_name}</option>
-                            </c:forEach>
-                        </select>
-                    </p>
-                    <p>
-                        <input type="number" min = "15" max="100" size="5" name="math_certificate" required placeholder="math">
-                        <input type="number" min = "15" max="100" size="5" name="physics_certificate" required placeholder="physics">
-                        <input type="number" min = "20" max="100" size="5" name="language_certificate" required placeholder="language">
-                        <input type="number" min = "0" max="100" size="5" name="school_certificate" required placeholder="school">
-                    </p>
-                    <input type="submit" class="button" value="Оформить" />
-                </form>
-            </div>
+                <h1>
+                    <fmt:message key="message.abiturientNewAbiturientTitle" bundle="${message}"/>
+                </h1>
+                <div class="inputForm">
+                    <form method="POST" action="controller">
+                        <input type="hidden" name="command"  value="add_abiturient"/>
+                        <br>
+                        <p>
+                            <input type="text" name="passport_series" required placeholder="<fmt:message key="message.abiturientPassportSeries" bundle="${message}"/>"/>
+                            <input type="number" name="passport_id" required placeholder="<fmt:message key="message.abiturientPassportId" bundle="${message}"/>"/>
+                        </p>
+                        <p>
+                            <input type="text" name="fname" required placeholder="<fmt:message key="message.abiturientFname" bundle="${message}"/>"/>
+                            <input type="text" name="sname" required placeholder="<fmt:message key="message.abiturientSname" bundle="${message}"/>"/>
+                            <input type="text" name="patronymic" placeholder="<fmt:message key="message.abiturientPartonymic" bundle="${message}"/>"/>
+                        </p>
+                        <p>
+                            <input name="phone" name="phone" type="text" placeholder="<fmt:message key="message.abiturientPhone" bundle="${message}"/>"/>
+                        </p>
+                        <p>
+                            <select  name="speciality">
+                                <c:forEach items="${requestScope.specialities}" var="speciality">
+                                    <option>${speciality.speciality_name}</option>
+                                </c:forEach>
+                            </select>
+                        </p>
+                        <p>
+                            <input type="number" min = "15" max="100" size="5" name="math_certificate" required placeholder="<fmt:message key="message.abiturientMath" bundle="${message}"/>">
+                            <input type="number" min = "15" max="100" size="5" name="physics_certificate" required placeholder="<fmt:message key="message.abiturientPhysics" bundle="${message}"/>">
+                            <input type="number" min = "20" max="100" size="5" name="language_certificate" required placeholder="<fmt:message key="message.abiturientLang" bundle="${message}"/>">
+                            <input type="number" min = "0" max="100" size="5" name="school_certificate" required placeholder="<fmt:message key="message.abiturientSchoolCertificate" bundle="${message}"/>">
+                        </p>
+                        <input type="submit" class="button" value="<fmt:message key="message.abiturientButtonAddAbiturient" bundle="${message}"/>" />
+                    </form>
+                </div>
             </div>
             <hr>
             <section>
-                <h1>All Abiturients</h1>
+                <h1>
+                    <fmt:message key="message.abiturientTableTitle" bundle="${message}"/>
+                </h1>
                 <div class="tbl-header">
                     <table cellpadding="0" cellspacing="0" border="0">
                         <thead>
                         <tr>
-                            <td>Total score</td>
-                            <td>speciality ID</td>
-                            <td>Sname</td>
-                            <td>Fname</td>
-                            <td>Siries</td>
-                            <td>Passport</td>
-                            <td>Phome</td>
+                            <td><fmt:message key="message.abiturientTableTotalScore" bundle="${message}"/></td>
+                            <td><fmt:message key="message.abiturientTableSpecialityId" bundle="${message}"/></td>
+                            <td><fmt:message key="message.abiturientTableSname" bundle="${message}"/></td>
+                            <td><fmt:message key="message.abiturientTablrFname" bundle="${message}"/></td>
+                            <td><fmt:message key="message.abiturientTableSeries" bundle="${message}"/></td>
+                            <td><fmt:message key="message.abiturientPassportId" bundle="${message}"/></td>
+                            <td><fmt:message key="message.abiturientPhone" bundle="${message}"/></td>
                             <td>  </td>
                             <td>  </td>
                         </tr>
@@ -137,7 +141,7 @@
                                     <td>${abiturient.phone}</td>
                                     <td>
                                         <a href="Controller?command=edit_abiturient&passport_id=${abiturient.passport_id}&passport_series=${abiturient.passport_series}">
-                                            Edit
+                                            <fmt:message key="message.editButton" bundle="${message}"/>
                                         </a>
                                     </td>
                                     <td>

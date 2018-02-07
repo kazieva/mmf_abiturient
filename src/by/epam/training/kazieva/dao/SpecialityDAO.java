@@ -14,19 +14,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpecialityDAO extends AbstractDAO {
-    private static String lang = "ru";
+    private static String lang;
     private static final Logger logger = Logger.getLogger(SpecialityDAO.class);
 
-    public List<Speciality > findAllSpeciality() throws DAOException {
+    public List<Speciality > findAllSpeciality(Object local) throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSpeciality;
+        if(("ru-Ru").equals(local)){lang ="ru";
+            System.out.println("ru");}
+        else {lang= "en";}
+
         List<Speciality > resultSpecialityList = new ArrayList<>();
         String query = "SELECT translation.speciality_name, speciality.id, speciality.recruitment_plan, translation.lang " +
                 "FROM speciality_translate  translation INNER JOIN speciality " +
                 "ON speciality.id=translation.speciality_id " +
-                "WHERE translation.lang = '"+  lang+"';";
+                "WHERE translation.lang = \""+  lang+"\";";
         try{
             connection = pool.getConnection();
             statement = getPreparedStatement(connection, query);

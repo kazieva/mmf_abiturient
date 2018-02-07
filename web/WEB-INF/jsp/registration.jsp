@@ -1,6 +1,12 @@
 <%@ page language ="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="resources.message" var="message"/>
+<html>
 <html class=''>
     <head>
          <style>
@@ -16,7 +22,9 @@
                         <div class="tabs">
                             <h3 class="login-tab">
                                 <a class="log-in active" href="/    ">
-                                    <span>Registration</span>
+                                    <span>
+                                        <fmt:message key="message.registration" bundle="${message}"/>
+                                    </span>
                                 </a>
                             </h3>
                         </div>
@@ -24,12 +32,12 @@
                             <div id="login-tab-content" class="active">
                                 <form class="login-form" method="POST" action="controller">
                                     <input type="hidden" name="command" value="registration"/>
-                                    <input type="text" class="input" id="user_login" autocomplete="off" name="login" placeholder="Email or Username">
-                                    <input type="password" class="input" id="user_pass" autocomplete="off" name="password" placeholder="Password">
-                                    <input type="password" class="input" id="user_key" autocomplete="off" name="key" placeholder="Key">
-                                    <input type="text" class="input" id="user_fname" name="fname" placeholder="Name"/>
-                                    <input type="text" class="input" id="user_sname" name="sname" placeholder="Surname"/>
-                                    <input type="submit" class="button" value="Registrate">
+                                    <input type="text" class="input" id="user_login" autocomplete="off" name="login" placeholder="<fmt:message key="message.registrationLogin" bundle="${message}"/>">
+                                    <input type="password" class="input" id="user_pass" autocomplete="off" name="password" placeholder="<fmt:message key="message.passwordPlaceholder" bundle="${message}"/>">
+                                    <input type="password" class="input" id="user_key" autocomplete="off" name="key" placeholder="<fmt:message key="message.keyPlaceholder" bundle="${message}"/>">
+                                    <input type="text" class="input" id="user_fname" name="fname" placeholder="<fmt:message key="message.usersFName" bundle="${message}"/>"/>
+                                    <input type="text" class="input" id="user_sname" name="sname" placeholder="<fmt:message key="message.usersSname" bundle="${message}"/>"/>
+                                    <input type="submit" class="button" value="<fmt:message key="message.registrate" bundle="${message}"/>">
                                 </form>
                             </div>
                         </div>

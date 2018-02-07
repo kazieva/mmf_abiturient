@@ -30,7 +30,8 @@ public class EditAbiturientCommand implements ActionCommand{
         request.setAttribute(PARAM_NAME_ABITURIENT, abiturient);
         List<Speciality> resultSpecialityList = null;
         try {
-            resultSpecialityList = SpecialityLogic.findAllSpeciality();
+            Object locate=  request.getSession().getAttribute(PARAM_NAME_LOCALE);
+            resultSpecialityList = SpecialityLogic.findAllSpeciality(locate);
         } catch (LogicException e) {
             logger.error(e);
         }

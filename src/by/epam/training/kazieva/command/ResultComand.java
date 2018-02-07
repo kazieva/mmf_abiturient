@@ -33,7 +33,8 @@ public class ResultComand implements ActionCommand {
         }
         List<Speciality> resultSpecialityList = null;
         try {
-            resultSpecialityList = SpecialityLogic.findAllSpeciality();
+            Object locate=  request.getSession().getAttribute(PARAM_NAME_LOCALE);
+            resultSpecialityList = SpecialityLogic.findAllSpeciality(locate);
         } catch (LogicException e) {
             logger.error(e);
         }

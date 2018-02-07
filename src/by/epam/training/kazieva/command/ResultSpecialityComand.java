@@ -16,13 +16,13 @@ public class ResultSpecialityComand implements ActionCommand {
          String page;
         List<Speciality> resultSpecialityList = null;
         try {
-            resultSpecialityList = SpecialityLogic.findAllSpeciality();
+            Object locate=  request.getSession().getAttribute(PARAM_NAME_LOCALE);
+            resultSpecialityList = SpecialityLogic.findAllSpeciality(locate);
         } catch (LogicException e) {
             logger.error(e);
         }
         if (resultSpecialityList.size()!=0) {
              request.setAttribute("specialities", resultSpecialityList);
-             System.out.println(resultSpecialityList);
              page=PATH_PAGE_SPECIALITY;
          } else {
              request.setAttribute("errorSpecialityPageMessage","Specialties not found.");

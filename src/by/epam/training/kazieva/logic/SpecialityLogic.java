@@ -11,11 +11,11 @@ import java.util.List;
 
 public class SpecialityLogic {
     private static final Logger logger = Logger.getLogger(SpecialityLogic.class);
-    public static List<Speciality> findAllSpeciality() throws LogicException {
+    public static List<Speciality> findAllSpeciality(Object local) throws LogicException {
         SpecialityDAO specialityDAO = new SpecialityDAO();
-        List<Speciality > resultSpecialityList = new ArrayList<>();
+        List<Speciality > resultSpecialityList ;
         try {
-            resultSpecialityList=specialityDAO.findAllSpeciality();
+            resultSpecialityList=specialityDAO.findAllSpeciality(local);
         } catch (SQLException e) {
             logger.error(e);
             throw new LogicException("Error find all speciality", e);
