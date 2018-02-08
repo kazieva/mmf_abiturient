@@ -77,22 +77,26 @@
                         <input type="hidden" name="command" value="add_speciality"/>
                         <br>
                         <p>
-                            <input type="number" name="id" min = "1" required placeholder="<fmt:message key="message.specielitiesSpecialityID" bundle="${message}"/>"/>
+                            <input type="number" name="id" min = "1" id="id" required placeholder="<fmt:message key="message.specielitiesSpecialityID" bundle="${message}"/>"/>
                         </p>
                         <p>
 
-                            <input type="text" name="en_speciality_name" required placeholder="<fmt:message key="message.newSpecialityEnglishName" bundle="${message}"/>"/>
+                            <input type="text" name="en_speciality_name" id="en_speciality_name" required placeholder="<fmt:message key="message.newSpecialityEnglishName" bundle="${message}"/>"/>
                         </p>
                         <p>
-                            <input type="text" name="ru_speciality_name" required placeholder="<fmt:message key="message.newSpecialityRussianName" bundle="${message}"/>"/>
+                            <input type="text" name="ru_speciality_name" id="ru_speciality_name" required placeholder="<fmt:message key="message.newSpecialityRussianName" bundle="${message}"/>"/>
                         </p>
                         <p>
-                            <input type="number"size="5" min = "1" name="recruitment_plan"  required placeholder="<fmt:message key="message.specielitiesTableRecruitmentPlan" bundle="${message}"/>">
+                            <input type="number"size="5" min = "1" id="recruitment_plan" name="recruitment_plan"  required placeholder="<fmt:message key="message.specielitiesTableRecruitmentPlan" bundle="${message}"/>">
                         </p>
-                        <input type="submit" class="button" value="<fmt:message key="message.newSpecialityButton" bundle="${message}"/>" />
+                        <input type="submit" class="button" onclick="return validateNewSpecialityForm()" value="<fmt:message key="message.newSpecialityButton" bundle="${message}"/>" />
                     </form>
                 </div>
             </div>
         </main>
+
+        <script type="text/javascript">
+            <%@include file='../../jsp/js/index.js' %>
+        </script>
     </body>
 </html>

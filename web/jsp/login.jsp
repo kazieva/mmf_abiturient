@@ -36,7 +36,7 @@
                                     <input type="text" class="input" id="user_login" autocomplete="off" name="login" required placeholder="Email or Username">
                                     <input type="password" class="input" id="user_pass" autocomplete="off" name="password" required placeholder="Password">
                                     <input type="password" class="input" id="user_key" autocomplete="off" name="key" required placeholder="Key">
-                                    <input type="submit" class="button" value="Login">
+                                    <input type="submit" class="button" onclick="return validateLoginForm()" value="Login">
                                 </form>
                             </div>
                         </div>
@@ -44,5 +44,8 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            <%@include file='js/index.js' %>
+        </script>
     </body>
 </html>

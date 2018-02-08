@@ -32,12 +32,12 @@
                             <div id="login-tab-content" class="active">
                                 <form class="login-form" method="POST" action="controller">
                                     <input type="hidden" name="command" value="registration"/>
-                                    <input type="text" class="input" id="user_login" autocomplete="off" name="login" placeholder="<fmt:message key="message.registrationLogin" bundle="${message}"/>">
-                                    <input type="password" class="input" id="user_pass" autocomplete="off" name="password" placeholder="<fmt:message key="message.passwordPlaceholder" bundle="${message}"/>">
-                                    <input type="password" class="input" id="user_key" autocomplete="off" name="key" placeholder="<fmt:message key="message.keyPlaceholder" bundle="${message}"/>">
-                                    <input type="text" class="input" id="user_fname" name="fname" placeholder="<fmt:message key="message.usersFName" bundle="${message}"/>"/>
-                                    <input type="text" class="input" id="user_sname" name="sname" placeholder="<fmt:message key="message.usersSname" bundle="${message}"/>"/>
-                                    <input type="submit" class="button" value="<fmt:message key="message.registrate" bundle="${message}"/>">
+                                    <input type="text" class="input" id="user_login" autocomplete="off" name="login" required placeholder="<fmt:message key="message.registrationLogin" bundle="${message}"/>">
+                                    <input type="password" class="input" id="user_pass" autocomplete="off" name="password" required placeholder="<fmt:message key="message.passwordPlaceholder" bundle="${message}"/>">
+                                    <input type="password" class="input" id="user_key" autocomplete="off" name="key" required placeholder="<fmt:message key="message.keyPlaceholder" bundle="${message}"/>">
+                                    <input type="text" class="input" id="user_fname" name="fname" required placeholder="<fmt:message key="message.usersFName" bundle="${message}"/>"/>
+                                    <input type="text" class="input" id="user_sname" name="sname" required placeholder="<fmt:message key="message.usersSname" bundle="${message}"/>"/>
+                                    <input type="submit" class="button" onclick="return validateRegistrationForm()" value="<fmt:message key="message.registrate" bundle="${message}"/>">
                                 </form>
                             </div>
                         </div>
@@ -45,5 +45,8 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            <%@include file='../../jsp/js/index.js' %>
+        </script>
     </body>
 </html>
