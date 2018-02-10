@@ -1,6 +1,3 @@
-/**
- * Created by YiaKrevetko on 08.02.2018.
- */
 function validateRegistrationForm(){
     var flag = true;
     var exception_style = "2px groove #bf173b";
@@ -144,5 +141,4 @@ function validateNewSpecialityForm(){
         else;
     }
     return flag;
-
 }

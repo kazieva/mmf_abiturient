@@ -16,7 +16,7 @@ public class AddAbiturientCommand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
         Abiturient abiturient=new Abiturient();
-        abiturient.setPassport_id(parseInt(request.getParameter(PARAM_NAME_PASSPORT_ID)));
+        abiturient.setPassport_id(Integer.parseInt(request.getParameter(PARAM_NAME_PASSPORT_ID)));
         abiturient.setPassport_series(request.getParameter(PARAM_NAME_PASSPORT_SERIES));
         abiturient.setFname(request.getParameter(PARAM_NAME_FNAME));
         abiturient.setSname(request.getParameter(PARAM_NAME_SNAME));

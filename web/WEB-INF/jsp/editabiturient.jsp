@@ -79,7 +79,7 @@
                         <input type="hidden" name="passport_id" required value="${abiturient.passport_id}"/>
                         <input type="hidden" name="passport_series" required value="${abiturient.passport_series}"/>
                         <p>
-                            <input type="text" name="new_passport_series" value="${abiturient.passport_series}" required placeholder="Серия паспорта"placeholder="<fmt:message key="message.abiturientPassportSeries" bundle="${message}"/>"/>
+                            <input type="text" name="new_passport_series" value="${abiturient.passport_series}" required placeholder="<fmt:message key="message.abiturientPassportSeries" bundle="${message}"/>"/>
                             <input type="number" name="new_passport_id" value="${abiturient.passport_id}" required placeholder="<fmt:message key="message.abiturientPassportId" bundle="${message}"/>"/>
                         </p>
                         <p>
@@ -88,7 +88,7 @@
                             <input type="text" name="new_patronymic" value="${abiturient.patronymic}" placeholder="<fmt:message key="message.abiturientPartonymic" bundle="${message}"/>"/>
                         </p>
                         <p>
-                            <input type="text" name="new_phone" required name="new_phone" value="${abiturient.phone}" placeholder="<fmt:message key="message.abiturientPhone" bundle="${message}"/>"/>
+                            <input type="text" name="new_phone" name="new_phone" value="${abiturient.phone}" placeholder="<fmt:message key="message.abiturientPhone" bundle="${message}"/>"/>
                         </p>
                         <p>
                             <select  name="new_speciality">
