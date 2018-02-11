@@ -78,16 +78,16 @@
                         <input type="hidden" name="command"  value="add_abiturient"/>
                         <br>
                         <p>
-                            <input type="text" name="passport_series" required placeholder="<fmt:message key="message.abiturientPassportSeries" bundle="${message}"/>"/>
-                            <input type="number" name="passport_id" required placeholder="<fmt:message key="message.abiturientPassportId" bundle="${message}"/>"/>
+                            <input type="text" name="passport_series" id="passport_series" required placeholder="<fmt:message key="message.abiturientPassportSeries" bundle="${message}"/>"/>
+                            <input type="number" min = "1000000" name="passport_id" id="passport_id" required placeholder="<fmt:message key="message.abiturientPassportId" bundle="${message}"/>"/>
                         </p>
                         <p>
-                            <input type="text" name="fname" required placeholder="<fmt:message key="message.abiturientFname" bundle="${message}"/>"/>
-                            <input type="text" name="sname" required placeholder="<fmt:message key="message.abiturientSname" bundle="${message}"/>"/>
-                            <input type="text" name="patronymic" placeholder="<fmt:message key="message.abiturientPartonymic" bundle="${message}"/>"/>
+                            <input type="text" name="sname" id="sname" required placeholder="<fmt:message key="message.abiturientSname" bundle="${message}"/>"/>
+                            <input type="text" name="fname" id="fname" required placeholder="<fmt:message key="message.abiturientFname" bundle="${message}"/>"/>
+                            <input type="text" name="patronymic" id="patronymic" placeholder="<fmt:message key="message.abiturientPartonymic" bundle="${message}"/>"/>
                         </p>
                         <p>
-                            <input name="phone" name="phone" type="text" placeholder="<fmt:message key="message.abiturientPhone" bundle="${message}"/>"/>
+                            <input name="phone" name="phone" id="phone" type="text" placeholder="<fmt:message key="message.abiturientPhone" bundle="${message}"/>"/>
                         </p>
                         <p>
                             <select  name="speciality">
@@ -97,12 +97,12 @@
                             </select>
                         </p>
                         <p>
-                            <input type="number" min = "15" max="100" size="5" name="math_certificate" required placeholder="<fmt:message key="message.abiturientMath" bundle="${message}"/>">
-                            <input type="number" min = "15" max="100" size="5" name="physics_certificate" required placeholder="<fmt:message key="message.abiturientPhysics" bundle="${message}"/>">
-                            <input type="number" min = "20" max="100" size="5" name="language_certificate" required placeholder="<fmt:message key="message.abiturientLang" bundle="${message}"/>">
-                            <input type="number" min = "0" max="100" size="5" name="school_certificate" required placeholder="<fmt:message key="message.abiturientSchoolCertificate" bundle="${message}"/>">
+                            <input type="number" min = "15" max="100" size="5" name="math_certificate" id="math_certificate" required placeholder="<fmt:message key="message.abiturientMath" bundle="${message}"/>">
+                            <input type="number" min = "15" max="100" size="5" name="physics_certificate" id="physics_certificate" required placeholder="<fmt:message key="message.abiturientPhysics" bundle="${message}"/>">
+                            <input type="number" min = "20" max="100" size="5" name="language_certificate" id="language_certificate" required placeholder="<fmt:message key="message.abiturientLang" bundle="${message}"/>">
+                            <input type="number" min = "0" max="100" size="5" name="school_certificate" id="school_certificate" required placeholder="<fmt:message key="message.abiturientSchoolCertificate" bundle="${message}"/>">
                         </p>
-                        <input type="submit" class="button" value="<fmt:message key="message.abiturientButtonAddAbiturient" bundle="${message}"/>" />
+                        <input type="submit" class="button" onclick="return validateAbiturient()"  value="<fmt:message key="message.abiturientButtonAddAbiturient" bundle="${message}"/>" />
                     </form>
                 </div>
             </div>
@@ -156,6 +156,9 @@
                 </div>
             </section>
         </main>
+        <script type="text/javascript">
+            <%@include file='../../jsp/js/index.js' %>
+        </script>
     </body>
 </html>
 
