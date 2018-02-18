@@ -18,14 +18,16 @@ public class RegistrationCommand implements ActionCommand {
         String fname= request.getParameter(PARAM_NAME_FNAME);
         String sname = request.getParameter(PARAM_NAME_SNAME);
         try {
-            UserLogic.registrateUser(login, password, key, fname, sname);
-            MailLogic.sendRegistratedEmail(login, password, key, fname);
+            if (UserLogic.checkUser(login)){
+                UserLogic.registrateUser(login, password, key, fname, sname);
+                MailLogic.sendRegistratedEmail(login, password, key, fname);
+                request.setAttribute(PARAM_NAME_REDIRECT,PARAM_NAME_TRUE);
+                request.setAttribute(PARAM_NAME_REDIRECT_URL, PATH_REDIRECT_ALL_USERS);
+            }
         } catch (LogicException e) {
             logger.error(e);
         }
-        request.setAttribute("redirect","true");
-        request.setAttribute("redirect_ulr", "Controller?command=all_users");
-        page=PATH_PAGE_ALL_USERS;
+        page=PATH_PAGE_GO_TO_REGISTRATION;
         return page;
     }
 

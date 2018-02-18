@@ -64,13 +64,14 @@ public class AbiturientDAO extends AbstractDAO{
         WrapperConnection connection = null;
         PreparedStatement statement = null;
         ResultSet resultAbiturient;
-        Abiturient abiturient = new Abiturient();
+        Abiturient abiturient =null;
         String query="SELECT * FROM abiturient WHERE passport_series=\""+passport_series+"\" AND passport_id="+passport_id+";";
         try{
             connection = pool.getConnection();
             statement = getPreparedStatement(connection, query);
             resultAbiturient = statement.executeQuery();
             if (resultAbiturient.next()) {
+                abiturient =new Abiturient();
                 abiturient = new Abiturient();
                 abiturient.setSpeciality_id(resultAbiturient.getInt("speciality_id"));
                 abiturient.setPassport_id(resultAbiturient.getInt("passport_id"));
@@ -165,27 +166,4 @@ public class AbiturientDAO extends AbstractDAO{
             pool.releaseConnection(connection);
     }
     }
-    public ResultSet getCountOfAbitirients() throws DAOException {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        WrapperConnection connection = null;
-        PreparedStatement statement = null;
-        String query="SELECT count(*) as count FROM abiturient;";
-        ResultSet result=null;
-        try{
-            connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
-            result = statement.executeQuery();
-        } catch (ConnectionPoolException e) {
-            logger.error(e);
-        } catch (SQLException e) {
-            throw new DAOException("Error during getCountOfAbitirients", e);
-        } catch (Exception e) {
-            logger.error(e);
-        } finally {
-            close(statement);
-            pool.releaseConnection(connection);
-        }
-        return result;
-    }
-
 }

@@ -1,5 +1,7 @@
 package by.epam.training.kazieva.connect;
 
+import org.apache.log4j.Logger;
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.Lock;
@@ -7,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ConnectionPool {
 
-  //  private static final Logger LOGGER = Logger.getLogger(ConnectionPool.class);
+    private static final Logger logger = Logger.getLogger(ConnectionPool.class);
     private static final int POOL_SIZE = 32;
     private static ConnectionPool instance;
 
@@ -22,7 +24,7 @@ public class ConnectionPool {
                 createConnection();
             }
         } catch (ClassNotFoundException e) {
-           // LOGGER.fatal(e);
+            logger.fatal(e);
             throw new RuntimeException("couldn't initialize connection pool");
         }
     }
@@ -45,11 +47,11 @@ public class ConnectionPool {
         if (availableConnections.size() < POOL_SIZE) {
             connection = new WrapperConnection();
         } else {
-         //   LOGGER.info("All availableConnections are busy");
+            logger.info("All availableConnections are busy");
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
-          //      LOGGER.error(e);
+                logger.error(e);
                 System.out.println(e);
             }
         }
@@ -63,7 +65,7 @@ public class ConnectionPool {
                 try {
                     connection = availableConnections.take();
                 } catch (InterruptedException e) {
-                  //  LOGGER.error(e);
+                    logger.error(e);
                 }
             } else {
                 throw new Exception("The instance of connection pool is null");
@@ -77,7 +79,7 @@ public class ConnectionPool {
                 availableConnections.put(connection);
             }
         } catch (InterruptedException e) {
-      //      LOGGER.error(e);
+            logger.error(e);
             System.out.println(e);
         }
     }

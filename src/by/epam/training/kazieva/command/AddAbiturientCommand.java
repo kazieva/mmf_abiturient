@@ -28,7 +28,10 @@ public class AddAbiturientCommand implements ActionCommand {
         abiturient.setLanguage_certificate(parseByte(request.getParameter(PARAM_NAME_LANGUAGE_CERTIFICATE)));
         try {
             abiturient.setSpeciality_id(SpecialityLogic.getSpecialityId(request.getParameter(PARAM_NAME_SPECIALITY)));
-            AbiturientLogic.addAbiturient(abiturient);
+            Abiturient testAbiturient =AbiturientLogic.getAfituruent(abiturient.getPassport_series(), abiturient.getPassport_id());
+            if(testAbiturient!=null){
+                AbiturientLogic.addAbiturient(abiturient);
+            }
         } catch (LogicException e) {
             logger.error(e);
         }

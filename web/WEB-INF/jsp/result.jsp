@@ -104,6 +104,7 @@
                         </p>
                         <input type="submit" class="button" onclick="return validateAbiturient()"  value="<fmt:message key="message.abiturientButtonAddAbiturient" bundle="${message}"/>" />
                     </form>
+                    ${abiturientError}
                 </div>
             </div>
             <hr>

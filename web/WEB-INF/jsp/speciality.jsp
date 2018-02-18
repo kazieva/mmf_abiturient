@@ -82,7 +82,6 @@
                                 <td><fmt:message key="message.specielitiesTableRecruitmentPlan" bundle="${message}"/></td>
                                 <c:if test="${sessionScope.user_role==\"admin\"}">
                                     <td>  </td>
-                                    <td>  </td>
                                 </c:if>
                             </tr>
                         </thead>
@@ -97,11 +96,6 @@
                                     <td>${speciality.speciality_name}</td>
                                     <td>${speciality.recruitment_plan}</td>
                                     <c:if test="${sessionScope.user_role==\"admin\"}">
-                                        <td>
-                                            <a href="Controller?command=edit_speciality&id=${speciality.id}">
-                                                <fmt:message key="message.editButton" bundle="${message}"/>
-                                            </a>
-                                        </td>
                                         <td>
                                             <a href="Controller?command=delete_speciality&id=${speciality.id}">
                                                 x

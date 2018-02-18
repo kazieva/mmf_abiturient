@@ -36,8 +36,6 @@ public class Controller extends HttpServlet {
         HttpSession session = request.getSession(false);
         String user_role=(String)session.getAttribute(USER_ROLE);
         String action = request.getParameter(COMMAND);
-     /*   request.getSession().setAttribute("lang", "ru");
-        System.out.println(request.getRequestURI());*/
         if("login".equals(action)) {
             try {
                 page = command.execute(request);

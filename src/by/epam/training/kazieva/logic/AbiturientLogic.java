@@ -5,7 +5,6 @@ import by.epam.training.kazieva.entity.Abiturient;
 import by.epam.training.kazieva.exception.DAOException;
 import by.epam.training.kazieva.exception.LogicException;
 import org.apache.log4j.Logger;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AbiturientLogic{
@@ -60,23 +59,5 @@ public class AbiturientLogic{
             logger.error(e);
             throw new LogicException("Error update abiturient", e);
         }
-    }/*
-    public static int getCountOfAbitirients(){
-        int count=0;
-        AbiturientDAO abiturientDAO = new AbiturientDAO();
-        ResultSet resultSet= null;
-        try {
-            resultSet = abiturientDAO.getCountOfAbitirients();
-        } catch (DAOException e) {
-            LOGGER.error(e);
-        }
-        try {
-            if(resultSet.next()){
-                count=Integer.parseInt(resultSet.getString("count"));
-            }
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        }
-        return count;
-    }*/
+    }
 }

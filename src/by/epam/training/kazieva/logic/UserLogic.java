@@ -5,7 +5,6 @@ import by.epam.training.kazieva.entity.User;
 import by.epam.training.kazieva.exception.DAOException;
 import by.epam.training.kazieva.exception.LogicException;
 import org.apache.log4j.Logger;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserLogic {
@@ -23,9 +22,18 @@ public class UserLogic {
         }
         return user;
     }
+    public static boolean checkUser(String login){
+        UserDAO userDAO=new UserDAO();
+        try {
+            return userDAO.findUser(login);
+        } catch (DAOException e) {
+            logger.error(e);
+        }
+        return false;
+    }
     public static List<User> getAllUsers() throws LogicException {
         UserDAO userDAO = new UserDAO();
-        List<User> resultUserList = new ArrayList<>();
+        List<User> resultUserList;
         try {
         resultUserList =userDAO.getAllUsers();
         } catch (DAOException e) {
@@ -47,8 +55,6 @@ public class UserLogic {
         }
     }
     public static void changeUserRole(String login, String user_role) throws LogicException {
-        //validation
-
         UserDAO userDAO = new UserDAO();
         try {
             userDAO.updateUserRole(login, user_role);

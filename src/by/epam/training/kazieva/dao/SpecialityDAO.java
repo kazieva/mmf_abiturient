@@ -83,7 +83,6 @@ public class SpecialityDAO extends AbstractDAO {
         }
         return specialityId;
     }
-
     public void deleteSpeciality(int id) throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;

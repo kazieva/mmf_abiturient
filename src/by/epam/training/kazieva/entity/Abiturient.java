@@ -1,7 +1,5 @@
 package by.epam.training.kazieva.entity;
 
-import java.util.Date;
-
 public class Abiturient {
     private String passport_series;
     private int passport_id;
@@ -18,7 +16,7 @@ public class Abiturient {
     public Abiturient() {
     }
 
-    public Abiturient(String passport_series, int passport_id, String fname, String sname, String patronymic, String phone, Date birthday, byte school_certificate, byte math_certificate, byte physics_certificate, byte language_certificate, int speciality_id) {
+    public Abiturient(String passport_series, int passport_id, String fname, String sname, String patronymic, String phone, byte school_certificate, byte math_certificate, byte physics_certificate, byte language_certificate, int speciality_id) {
         this.passport_series = passport_series;
         this.passport_id = passport_id;
         this.fname = fname;

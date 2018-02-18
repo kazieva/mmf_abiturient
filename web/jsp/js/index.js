@@ -48,7 +48,7 @@ function validateRegistrationForm(){
             flag =false;
         }
         else;
-    }
+    }/*
     // sname
     var sname = document.getElementById('user_sname');
     sname.style.border="";
@@ -62,7 +62,7 @@ function validateRegistrationForm(){
             flag =false;
         }
         else;
-    }
+    }*/
     return flag;
 }
 

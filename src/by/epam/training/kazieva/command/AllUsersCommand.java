@@ -6,7 +6,6 @@ import by.epam.training.kazieva.logic.UserLogic;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 

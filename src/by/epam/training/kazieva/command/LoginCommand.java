@@ -1,16 +1,11 @@
 package by.epam.training.kazieva.command;
-import by.epam.training.kazieva.entity.Abiturient;
-import by.epam.training.kazieva.entity.Speciality;
 import by.epam.training.kazieva.entity.User;
 import by.epam.training.kazieva.exception.LogicException;
-import by.epam.training.kazieva.logic.AbiturientLogic;
-import by.epam.training.kazieva.logic.SpecialityLogic;
 import by.epam.training.kazieva.logic.UserLogic;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 public class LoginCommand implements ActionCommand{
     private static final Logger logger = Logger.getLogger(LoginCommand.class);

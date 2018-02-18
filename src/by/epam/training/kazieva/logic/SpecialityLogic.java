@@ -6,7 +6,6 @@ import by.epam.training.kazieva.exception.DAOException;
 import by.epam.training.kazieva.exception.LogicException;
 import org.apache.log4j.Logger;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SpecialityLogic {

@@ -48,6 +48,38 @@ public class UserDAO extends AbstractDAO {
         }
         return user;
     }
+    public boolean findUser(String login) throws DAOException {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        WrapperConnection connection = null;
+        PreparedStatement statement = null;
+        ResultSet result;
+        String query = "SELECT * FROM user WHERE login = \"" +login+"\";";
+        try{
+            connection = pool.getConnection();
+            statement = getPreparedStatement(connection, query);
+            result = statement.executeQuery();
+            try {
+                if (result.next()) {
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            } catch (SQLException e) {
+                logger.error(e);
+            }
+        } catch (ConnectionPoolException e) {
+            logger.error(e);
+        } catch (SQLException e) {
+            throw new DAOException("Error during findUser", e);
+        } catch (Exception e) {
+            logger.error(e);
+        } finally {
+            close(statement);
+            pool.releaseConnection(connection);
+        }
+        return false;
+    }
     public List<User> getAllUsers() throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;

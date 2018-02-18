@@ -16,6 +16,12 @@ public enum CommandEnum {
             this.command = new LogoutCommand();
         }
     },
+    GO_TO_EMPTY_PAGE{
+        {
+            this.command=new GoToEmptyPageCommand();
+        }
+    }
+    ,
     GO_TO_REGISTRATION {
         {
             this.command = new GoToRegistrsionCommand();

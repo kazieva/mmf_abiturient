@@ -1,10 +1,12 @@
 package by.epam.training.kazieva.connect;
 
+import org.apache.log4j.Logger;
+
 import java.sql.*;
 import java.util.Properties;
 
 public class WrapperConnection {
-   // private static final Logger LOGGER = Logger.getLogger(WrapperConnection.class);
+    private static final Logger logger = Logger.getLogger(WrapperConnection.class);
     private Connection connection;
 
     WrapperConnection() {
@@ -21,8 +23,7 @@ public class WrapperConnection {
         try {
             connection = DriverManager.getConnection(url, properties);
         } catch (SQLException e) {
-         //   LOGGER.error(e);
-            System.out.println(e);
+            logger.error(e);
         }
     }
 
@@ -32,8 +33,7 @@ public class WrapperConnection {
             try {
                 statement = connection.createStatement();
             } catch (SQLException e) {
-                //LOGGER.error(e);
-                System.out.println(e);
+                logger.error(e);
             }
             if (statement != null) {
                 return statement;
@@ -47,25 +47,20 @@ public class WrapperConnection {
             try {
                 statement.close();
             } catch (SQLException e) {
-             //   LOGGER.error("statement is null ", e);
-                System.out.println("statement is null ");
+                logger.error("statement is null ", e);
             }
         }
     }
-
-    // вызывается в пуле при closePool
     void closeConnection() {
         if (connection != null) {
             try {
                 connection.close();
             } catch (SQLException e) {
-             //   LOGGER.error("wrong connection", e);
-                System.out.println("wrong connection");
+                logger.error("wrong connection", e);
             }
         }
     }
 
-// другие необходимые делегированные методы интерфейса Connection
 
     public PreparedStatement prepareStatement(String sql) throws SQLException {
         return connection.prepareStatement(sql);
