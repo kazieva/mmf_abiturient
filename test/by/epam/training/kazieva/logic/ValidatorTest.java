@@ -11,7 +11,7 @@ public class ValidatorTest {
         String key="";
         String fname="";
         String sname="";
-        boolean result = Validator.registrationValidation(login,pass,key,fname,sname);
+        boolean result = Validator.isValidRegistration(login,pass,key,fname,sname);
         Assert.assertFalse(result);
     }
     @Test
@@ -21,7 +21,7 @@ public class ValidatorTest {
         String key="kazieva";
         String fname="Yulia";
         String sname="Kazieva";
-        boolean result = Validator.registrationValidation(login,pass,key,fname,sname);
+        boolean result = Validator.isValidRegistration(login,pass,key,fname,sname);
         Assert.assertTrue(result);
     }
 
@@ -30,7 +30,7 @@ public class ValidatorTest {
         String login="kazieva@bsu.by";
         String pass="kazieva";
         String key="kazieva";
-        boolean result = Validator.loginationValidation(login,pass,key);
+        boolean result = Validator.isValidLoginationInfo(login,pass,key);
         Assert.assertTrue(result);
     }
     @Test
@@ -38,7 +38,7 @@ public class ValidatorTest {
         String login="kazieva@bsu.by";
         String pass="";
         String key="kazieva";
-        boolean result = Validator.loginationValidation(login,pass,key);
+        boolean result = Validator.isValidLoginationInfo(login,pass,key);
         Assert.assertFalse(result);
     }
 
@@ -48,7 +48,7 @@ public class ValidatorTest {
         String ru_name="веб-программирование";
         String en_name="web-progremming";
         int recruitment_plan = 25;
-        boolean result = Validator.newSpecialityValidation(speciality_id,ru_name,en_name,recruitment_plan);
+        boolean result = Validator.isValidNewSpeciality(speciality_id,ru_name,en_name,recruitment_plan);
         Assert.assertTrue(result);
     }
     @Test
@@ -57,7 +57,7 @@ public class ValidatorTest {
         String ru_name="";
         String en_name="web-progremming";
         int recruitment_plan = 25;
-        boolean result = Validator.newSpecialityValidation(speciality_id,ru_name,en_name,recruitment_plan);
+        boolean result = Validator.isValidNewSpeciality(speciality_id,ru_name,en_name,recruitment_plan);
         Assert.assertFalse(result);
     }
 

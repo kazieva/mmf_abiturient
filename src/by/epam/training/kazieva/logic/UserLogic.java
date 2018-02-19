@@ -11,7 +11,7 @@ public class UserLogic {
     private static final Logger logger = Logger.getLogger(UserLogic.class);
     public static User findUser(String login, String password, String key) throws LogicException {
         User user = null;
-        if(Validator.loginationValidation(login, password, key)){
+        if(Validator.isValidLoginationInfo(login, password, key)){
             UserDAO userDAO = new UserDAO();
             try {
                 user = userDAO.findUser(login, password, key);
@@ -25,7 +25,7 @@ public class UserLogic {
     public static boolean checkUser(String login){
         UserDAO userDAO=new UserDAO();
         try {
-            return userDAO.findUser(login);
+            return userDAO.isFindUser(login);
         } catch (DAOException e) {
             logger.error(e);
         }
@@ -43,7 +43,7 @@ public class UserLogic {
         return resultUserList;
     }
     public static void registrateUser(String login, String password, String key, String fname, String sname) throws LogicException {
-        boolean flag = Validator.registrationValidation(login, password, key, fname, sname);
+        boolean flag = Validator.isValidRegistration(login, password, key, fname, sname);
         if(flag) {
             UserDAO userDAO = new UserDAO();
             try {

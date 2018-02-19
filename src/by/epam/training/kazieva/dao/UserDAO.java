@@ -58,7 +58,7 @@ public class UserDAO extends AbstractDAO {
         }
         return user;
     }
-    public boolean findUser(String login) throws DAOException {
+    public boolean isFindUser(String login) throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;

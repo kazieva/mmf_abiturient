@@ -4,7 +4,7 @@ function validateRegistrationForm(){
     var exception_style = "2px groove #bf173b";
     var email_pattern=/[0-9a-z_]+@[0-9a-z_]+\.[a-z]{2,5}/i;
 
-    // проверка email
+    // email
     var email = document.getElementById('user_login');
     email.style.border="";
     if(email.value.trim()==""){
@@ -32,11 +32,10 @@ function validateRegistrationForm(){
         key.style.border=exception_style;
         flag = false;
     }
-    var name_pattern=/^[A-Zа-яА-Я][a-zа-я]*[a-zа-я]+$/g;
+    var name_pattern=/^[A-ZА-Я][a-zа-я]*[a-zа-я]+$/g;
 
     // name
     var fname = document.getElementById('user_fname');
-
     fname.style.border="";
     if(fname.value.trim()==""){
         fname.style.border=exception_style;

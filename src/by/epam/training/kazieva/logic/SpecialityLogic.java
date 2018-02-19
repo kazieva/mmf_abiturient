@@ -42,7 +42,7 @@ public class SpecialityLogic {
         }
     }
     public static void addNewSpeciality(int speciality_id, String ru_name, String en_name, int recruitment_plan ) throws LogicException {
-        if(Validator.newSpecialityValidation(speciality_id, ru_name, en_name,recruitment_plan )){
+        if(Validator.isValidNewSpeciality(speciality_id, ru_name, en_name,recruitment_plan )){
             SpecialityDAO specialityDAO = new SpecialityDAO();
             try {
                 specialityDAO.addSpeciality(speciality_id, recruitment_plan);
