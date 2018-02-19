@@ -47,21 +47,7 @@ function validateRegistrationForm(){
             flag =false;
         }
         else;
-    }/*
-    // sname
-    var sname = document.getElementById('user_sname');
-    sname.style.border="";
-    if(sname.value.trim()==""){
-        sname.style.border=exception_style;
-        flag = false;
     }
-    else{
-        if(name_pattern.test(sname.value)==false){
-            sname.style.border=exception_style;
-            flag =false;
-        }
-        else;
-    }*/
     return flag;
 }
 
