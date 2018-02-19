@@ -5,6 +5,7 @@ import by.epam.training.kazieva.entity.User;
 import by.epam.training.kazieva.exception.ConnectionPoolException;
 import by.epam.training.kazieva.exception.DAOException;
 import org.apache.log4j.Logger;
+import sun.dc.pr.PRError;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,16 +13,25 @@ import java.util.List;
 
 public class UserDAO extends AbstractDAO {
     private static final Logger logger = Logger.getLogger(UserDAO.class);
+    private static final String SQL_FIND_USER_LOGINATION= "SELECT * FROM user WHERE login =? AND password=MD5(?) AND user.`key`=MD5(?);";
+    private static final String SQL_FIND_USER="SELECT * FROM user WHERE login = ?;";
+    private static final String SQL_FIND_ALL_USERS="SELECT * FROM user;";
+    private static final String SQL_UPDATE_USER_ROLE= "UPDATE user SET user_role=? WHERE login =?;";
+    private static final String SQL_REGISTRATE_USER=  "INSERT INTO user (login, user.password, user.key, fname, sname) "+
+            "VALUES (?, MD5(?), MD5(?), ?, ?);";
+
     public User findUser(String login, String password, String key) throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
         ResultSet result;
         User user = null;
-        String query = "SELECT * FROM user WHERE login = \"" +login+"\" AND password=MD5('" + password + "') AND user.`key`=MD5(\""+key+"\");";
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_FIND_USER_LOGINATION);
+            statement.setString(1,login);
+            statement.setString(2,password);
+            statement.setString(3,key);
             result = statement.executeQuery();
             try {
                 if (result.next()) {
@@ -53,10 +63,10 @@ public class UserDAO extends AbstractDAO {
         WrapperConnection connection = null;
         PreparedStatement statement = null;
         ResultSet result;
-        String query = "SELECT * FROM user WHERE login = \"" +login+"\";";
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_FIND_USER);
+            statement.setString(1,login);
             result = statement.executeQuery();
             try {
                 if (result.next()) {
@@ -86,10 +96,9 @@ public class UserDAO extends AbstractDAO {
         PreparedStatement statement = null;
         ResultSet result;
         List<User> resultUserList = null;
-        String query = "SELECT * FROM user;";
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_FIND_ALL_USERS);
             result = statement.executeQuery();
             if (result.next()) {
                 resultUserList= new ArrayList<>();
@@ -125,12 +134,14 @@ public class UserDAO extends AbstractDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        String query = "INSERT INTO user (login, user.password, user.key, fname, sname) VALUES (\""+
-                    login+"\", MD5('"+password+"'), MD5('"+key+"'), \""+fname+"\", \""+sname+"\");";
-        logger.info(query);
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_REGISTRATE_USER);
+            statement.setString(1, login);
+            statement.setString(2, password);
+            statement.setString(3, key);
+            statement.setString(4,fname);
+            statement.setString(5,sname);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
             logger.error(e);
@@ -147,10 +158,11 @@ public class UserDAO extends AbstractDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        String query = "UPDATE user SET user_role='"+role+"' WHERE login =\""+login+"\";";
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_UPDATE_USER_ROLE);
+            statement.setString(1,role);
+            statement.setString(2,login);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
             logger.error(e);

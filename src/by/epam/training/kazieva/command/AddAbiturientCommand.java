@@ -29,7 +29,7 @@ public class AddAbiturientCommand implements ActionCommand {
         try {
             abiturient.setSpeciality_id(SpecialityLogic.getSpecialityId(request.getParameter(PARAM_NAME_SPECIALITY)));
             Abiturient testAbiturient =AbiturientLogic.getAfituruent(abiturient.getPassport_series(), abiturient.getPassport_id());
-            if(testAbiturient!=null){
+            if(testAbiturient==null){
                 AbiturientLogic.addAbiturient(abiturient);
             }
         } catch (LogicException e) {

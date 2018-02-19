@@ -16,6 +16,24 @@ import java.util.List;
 public class SpecialityDAO extends AbstractDAO {
     private static String lang;
     private static final Logger logger = Logger.getLogger(SpecialityDAO.class);
+    private static final String SQL_ADD_SPECIALITY="INSERT INTO speciality " +
+            "(id, recruitment_plan) " +
+            "VALUES (?, ?);";
+    private static final String SQL_ADD_SPECIALITY_TRANSLATE="INSERT INTO speciality_translate " +
+            "(speciality_id, lang, speciality_name) " +
+            "VALUES (?, ?,?);";
+    private static final String SQL_DELETE_SPECIALITY="DELETE speciality_translate, speciality "+
+            "FROM speciality_translate LEFT JOIN speciality " +
+            "ON speciality.id=speciality_translate.speciality_id " +
+            "WHERE speciality.id=?;";
+    private static final String SQL_GET_SPECIALITY_ID= "SELECT speciality_id "+
+            "FROM speciality_translate "+
+            "WHERE speciality_name = ?;";
+    private static final String SQL_GET_ALL_SPECIALITIES="SELECT translation.speciality_name, speciality.id, speciality.recruitment_plan, translation.lang " +
+            "FROM speciality_translate  translation INNER JOIN speciality " +
+            "ON speciality.id=translation.speciality_id " +
+            "WHERE translation.lang = ?;";
+
 
     public List<Speciality > findAllSpeciality(Object local) throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -27,13 +45,10 @@ public class SpecialityDAO extends AbstractDAO {
         else {lang= "en";}
 
         List<Speciality > resultSpecialityList = new ArrayList<>();
-        String query = "SELECT translation.speciality_name, speciality.id, speciality.recruitment_plan, translation.lang " +
-                "FROM speciality_translate  translation INNER JOIN speciality " +
-                "ON speciality.id=translation.speciality_id " +
-                "WHERE translation.lang = \""+  lang+"\";";
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_GET_ALL_SPECIALITIES);
+            statement.setString(1,lang);
             resultSpeciality = statement.executeQuery();
             if (resultSpeciality.next()) {
                 do {
@@ -63,10 +78,10 @@ public class SpecialityDAO extends AbstractDAO {
         PreparedStatement statement = null;
         ResultSet result;
         int specialityId=0;
-        String query = "SELECT speciality_id FROM speciality_translate WHERE speciality_name = \""+specialityName+"\";";
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_GET_SPECIALITY_ID);
+            statement.setString(1,specialityName);
             result = statement.executeQuery();
             if (result.next()) {
                 specialityId= result.getInt("speciality_id");
@@ -87,12 +102,10 @@ public class SpecialityDAO extends AbstractDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        String query="DELETE speciality_translate, speciality FROM speciality_translate LEFT JOIN speciality " +
-                "ON speciality.id=speciality_translate.speciality_id " +
-                "WHERE speciality.id="+id+";";
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_DELETE_SPECIALITY);
+            statement.setInt(1,id);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
             logger.error(e);
@@ -109,12 +122,11 @@ public class SpecialityDAO extends AbstractDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        String query="INSERT INTO speciality " +
-                "(id, recruitment_plan) " +
-                "VALUES ("+id+", "+recruitment_plan+");";
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_ADD_SPECIALITY);
+            statement.setInt(1,id);
+            statement.setInt(2,recruitment_plan);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
             logger.error(e);
@@ -131,12 +143,12 @@ public class SpecialityDAO extends AbstractDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        String query="INSERT INTO speciality_translate " +
-                "(speciality_id, lang, speciality_name) " +
-                "VALUES ("+id+", \""+lang+"\", \""+name+"\");";
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_ADD_SPECIALITY_TRANSLATE);
+            statement.setInt(1,id);
+            statement.setString(2,lang);
+            statement.setString(3,name);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
             logger.error(e);

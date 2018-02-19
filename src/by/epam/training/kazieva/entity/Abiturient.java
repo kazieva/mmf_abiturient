@@ -14,6 +14,17 @@ public class Abiturient {
     private int speciality_id;
 
     public Abiturient() {
+        this.passport_series = "";
+        this.passport_id = 0;
+        this.fname = "";
+        this.sname = "";
+        this.patronymic = "";
+        this.phone = "";
+        this.school_certificate = 0;
+        this.math_certificate = 0;
+        this.physics_certificate = 0;
+        this.language_certificate = 0;
+        this.speciality_id = 0;
     }
 
     public Abiturient(String passport_series, int passport_id, String fname, String sname, String patronymic, String phone, byte school_certificate, byte math_certificate, byte physics_certificate, byte language_certificate, int speciality_id) {

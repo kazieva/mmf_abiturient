@@ -16,17 +16,27 @@ import java.util.List;
 public class AbiturientDAO extends AbstractDAO{
 
     private static final Logger logger = Logger.getLogger(AbiturientDAO.class);
+    private static final String SQL_FIND_ALL_ABITURIENTS="SELECT * FROM abiturient "+
+            "ORDER BY (school_certificate+math_certificate+physics_certificate+language_certificate)  DESC;";
+    private static final String SQL_GET_ABITURIENT="SELECT * FROM abiturient WHERE passport_series=? AND passport_id=?;";
+    private static final String SQL_ADD_ABITURIENT="INSERT INTO abiturient "+
+            "(passport_series, passport_id, speciality_id, fname, sname, patronymic, phone, "+
+            "school_certificate, math_certificate, physics_certificate, language_certificate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
+    private static final String SQL_DELETE_ABITURIENT="DELETE FROM abiturient WHERE passport_series=? AND passport_id=?;";
+    private static final String SQL_UPDATE_ABITURIENT="UPDATE abiturient SET passport_series=?, passport_id=?, speciality_id=?, fname=?, "+
+            "sname=?, patronymic=?, phone=?, school_certificate=?, math_certificate=?, "+
+            "physics_certificate=?, language_certificate=? "+
+            " WHERE passport_series=? AND passport_id=?;";
+
     public List<Abiturient> findAllAbituriebt() throws DAOException {
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
         ResultSet resultAbiturient;
         List<Abiturient> resultAbiturientsList = new ArrayList<>();
-        String query = "SELECT * FROM abiturient ORDER BY (school_certificate+math_certificate+physics_certificate+language_certificate)  DESC;";
-        logger.info(query);
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_FIND_ALL_ABITURIENTS);
             resultAbiturient = statement.executeQuery();
             if (resultAbiturient.next()) {
                 do {
@@ -65,10 +75,11 @@ public class AbiturientDAO extends AbstractDAO{
         PreparedStatement statement = null;
         ResultSet resultAbiturient;
         Abiturient abiturient =null;
-        String query="SELECT * FROM abiturient WHERE passport_series=\""+passport_series+"\" AND passport_id="+passport_id+";";
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_GET_ABITURIENT);
+            statement.setString(1, passport_series);
+            statement.setInt(2,passport_id);
             resultAbiturient = statement.executeQuery();
             if (resultAbiturient.next()) {
                 abiturient =new Abiturient();
@@ -102,13 +113,20 @@ public class AbiturientDAO extends AbstractDAO{
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        String query="INSERT INTO abiturient (passport_series, passport_id, speciality_id, fname, sname, patronymic, phone, school_certificate, math_certificate, physics_certificate, language_certificate) VALUES " +
-                "(\""+abiturient.getPassport_series()+"\", "+abiturient.getPassport_id()+", "+abiturient.getSpeciality_id()+", \""+ abiturient.getFname()+"\", \""+abiturient.getSname()+"\", \""+abiturient.getPatronymic()+"\", \"" +abiturient.getPhone()+"\", "+abiturient.getSchool_certificate()+ ", "+abiturient.getMath_certificate()+", "+abiturient.getPhysics_certificate()+", "+abiturient.getLanguage_certificate()+");";
-
-        logger.info(query);
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_ADD_ABITURIENT);
+            statement.setString(1,abiturient.getPassport_series());
+            statement.setInt(2, abiturient.getPassport_id());
+            statement.setInt(3,abiturient.getSpeciality_id());
+            statement.setString(4,abiturient.getFname());
+            statement.setString(5,abiturient.getSname());
+            statement.setString(6, abiturient.getPatronymic());
+            statement.setString(7,abiturient.getPhone());
+            statement.setByte(8, abiturient.getSchool_certificate());
+            statement.setByte(9,abiturient.getMath_certificate());
+            statement.setByte(10,  abiturient.getPhysics_certificate());
+            statement.setByte(11,abiturient.getLanguage_certificate());
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
             logger.error(e);
@@ -125,10 +143,11 @@ public class AbiturientDAO extends AbstractDAO{
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        String query="DELETE FROM abiturient WHERE passport_series=\""+passport_series+"\" AND passport_id="+passport_id+";";
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_DELETE_ABITURIENT);
+            statement.setString(1, passport_series);
+            statement.setInt(2,passport_id);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
             logger.error(e);
@@ -145,15 +164,22 @@ public class AbiturientDAO extends AbstractDAO{
         ConnectionPool pool = ConnectionPool.getInstance();
         WrapperConnection connection = null;
         PreparedStatement statement = null;
-        String query="UPDATE abiturient SET passport_series=\""+abiturient.getPassport_series()+"\", passport_id="+abiturient.getPassport_id()+", speciality_id="+abiturient.getSpeciality_id()+", fname=\""+abiturient.getFname()+"\", " +
-                "sname=\""+abiturient.getSname()+"\", patronymic=\""+abiturient.getPatronymic()+"\", phone=\""+abiturient.getPhone()+"\", "+
-                "school_certificate="+abiturient.getSchool_certificate()+", math_certificate="+abiturient.getMath_certificate()+", "+
-                "physics_certificate="+abiturient.getPhysics_certificate()+", language_certificate="+abiturient.getLanguage_certificate()+
-                " WHERE passport_series=\""+old_passport_series+"\" AND passport_id="+old_passport_id+";";
-        logger.info(query);
         try{
             connection = pool.getConnection();
-            statement = getPreparedStatement(connection, query);
+            statement = getPreparedStatement(connection, SQL_UPDATE_ABITURIENT);
+            statement.setString(1,abiturient.getPassport_series());
+            statement.setInt(2, abiturient.getPassport_id());
+            statement.setInt(3,abiturient.getSpeciality_id());
+            statement.setString(4,abiturient.getFname());
+            statement.setString(5,abiturient.getSname());
+            statement.setString(6, abiturient.getPatronymic());
+            statement.setString(7,abiturient.getPhone());
+            statement.setByte(8, abiturient.getSchool_certificate());
+            statement.setByte(9,abiturient.getMath_certificate());
+            statement.setByte(10,  abiturient.getPhysics_certificate());
+            statement.setByte(11,abiturient.getLanguage_certificate());
+            statement.setString(12, old_passport_series);
+            statement.setInt(13, old_passport_id);
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
             logger.error(e);
