@@ -9,6 +9,7 @@ public class Speciality {
 
     public Speciality() {
     }
+
     public Speciality(int id, String speciality_name, String lang, int recruitment_plan) {
         this.id = id;
         this.speciality_name = speciality_name;

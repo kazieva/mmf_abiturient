@@ -7,9 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public abstract class AbstractDAO  {
+public abstract class AbstractDAO {
 
     private static final Logger logger = Logger.getLogger(AbstractDAO.class);
+
     public static PreparedStatement getPreparedStatement(WrapperConnection connection, String query) {
         PreparedStatement statement = null;
         try {

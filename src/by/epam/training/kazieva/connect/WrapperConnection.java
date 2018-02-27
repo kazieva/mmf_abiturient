@@ -51,6 +51,7 @@ public class WrapperConnection {
             }
         }
     }
+
     void closeConnection() {
         if (connection != null) {
             try {

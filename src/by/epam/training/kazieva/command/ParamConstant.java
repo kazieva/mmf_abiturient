@@ -4,7 +4,7 @@ package by.epam.training.kazieva.command;
 interface ParamConstant {
 
     String PARAM_NAME_LOGIN = "login";
-    String PARAM_NAME_PASSWORD ="password";
+    String PARAM_NAME_PASSWORD = "password";
     String PARAM_NAME_KEY = "key";
     String PARAM_NAME_ROLE = "user";
     String PARAM_NAME_USER_ROLE = "user_role";
@@ -36,9 +36,9 @@ interface ParamConstant {
     String PARAM_NAME_SPECIALITY_RU_NAME = "ru_speciality_name";
     String PARAM_NAME_SPECIALITY_EN_NAME = "en_speciality_name";
     String PARAM_NAME_SPECIALITY_RECRUTMENT_PLAN = "recruitment_plan";
-    String PARAM_NAME_REDIRECT_URL="redirect_ulr";
+    String PARAM_NAME_REDIRECT_URL = "redirect_ulr";
     String PARAM_NAME_REDIRECT = "redirect";
     String PARAM_NAME_TRUE = "true";
     String PARAM_NAME_LOCALE = "lang";
-    String PARAM_NAME_OLD_COMMAND="old_command";
+    String PARAM_NAME_OLD_COMMAND = "old_command";
 }

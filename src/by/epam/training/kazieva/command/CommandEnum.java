@@ -16,12 +16,11 @@ public enum CommandEnum {
             this.command = new LogoutCommand();
         }
     },
-    GO_TO_EMPTY_PAGE{
+    GO_TO_EMPTY_PAGE {
         {
-            this.command=new GoToEmptyPageCommand();
+            this.command = new GoToEmptyPageCommand();
         }
-    }
-    ,
+    },
     GO_TO_REGISTRATION {
         {
             this.command = new GoToRegistrsionCommand();
@@ -32,57 +31,57 @@ public enum CommandEnum {
             this.command = new RegistrationCommand();
         }
     },
-    RESULT{
+    RESULT {
         {
-            this.command= new ResultComand();
+            this.command = new ResultComand();
         }
     },
-    ADD_ABITURIENT{
+    ADD_ABITURIENT {
         {
-            this.command= new AddAbiturientCommand();
+            this.command = new AddAbiturientCommand();
         }
     },
-    DELETE_ABITURIENT{
+    DELETE_ABITURIENT {
         {
-            this.command=new DeleteAbiturientCommand();
+            this.command = new DeleteAbiturientCommand();
         }
     },
-    EDIT_ABITURIENT{
+    EDIT_ABITURIENT {
         {
             this.command = new EditAbiturientCommand();
         }
     },
-    UPDATE_ABITURIENT{
+    UPDATE_ABITURIENT {
         {
             this.command = new UpdateAbiturientCommand();
         }
     },
-    RESULT_SPECIALITY{
+    RESULT_SPECIALITY {
         {
-            this.command= new ResultSpecialityComand();
+            this.command = new ResultSpecialityComand();
         }
     },
-    GO_TO_NEW_SPECIALITY{
+    GO_TO_NEW_SPECIALITY {
         {
-            this.command=new GoToNewSpecialityCommand();
+            this.command = new GoToNewSpecialityCommand();
         }
     },
-    ADD_SPECIALITY{
+    ADD_SPECIALITY {
         {
-            this.command= new AddSpecialityCommand();
+            this.command = new AddSpecialityCommand();
         }
     },
-    DELETE_SPECIALITY{
+    DELETE_SPECIALITY {
         {
-            this.command=new DeleteSpecialityCommand();
+            this.command = new DeleteSpecialityCommand();
         }
     },
-    ALL_USERS{
+    ALL_USERS {
         {
-            this.command=new AllUsersCommand();
+            this.command = new AllUsersCommand();
         }
     },
-    UPDATE_USER_ROLE{
+    UPDATE_USER_ROLE {
         {
             this.command = new UpdateUserRoleCommand();
         }

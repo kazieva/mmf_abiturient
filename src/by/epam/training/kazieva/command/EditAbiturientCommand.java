@@ -11,26 +11,27 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.List;
 
-public class EditAbiturientCommand implements ActionCommand{
+public class EditAbiturientCommand implements ActionCommand {
     private static final Logger logger = Logger.getLogger(EditAbiturientCommand.class);
+
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
         String page = null;
         String passport_series = request.getParameter(PARAM_NAME_PASSPORT_SERIES);
-        int passport_id=Integer.parseInt(request.getParameter(PARAM_NAME_PASSPORT_ID));
+        int passport_id = Integer.parseInt(request.getParameter(PARAM_NAME_PASSPORT_ID));
         Abiturient abiturient = null;
         try {
             abiturient = AbiturientLogic.getAfituruent(passport_series, passport_id);
         } catch (LogicException e) {
             logger.error(e);
         }
-        if (abiturient!=null){
-            page=PATH_EDIT_ABITURIENT_PAGE;
+        if (abiturient != null) {
+            page = PATH_EDIT_ABITURIENT_PAGE;
         }
         request.setAttribute(PARAM_NAME_ABITURIENT, abiturient);
         List<Speciality> resultSpecialityList = null;
         try {
-            Object locate=  request.getSession().getAttribute(PARAM_NAME_LOCALE);
+            Object locate = request.getSession().getAttribute(PARAM_NAME_LOCALE);
             resultSpecialityList = SpecialityLogic.findAllSpeciality(locate);
         } catch (LogicException e) {
             logger.error(e);

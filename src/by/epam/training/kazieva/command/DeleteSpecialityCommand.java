@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 public class DeleteSpecialityCommand implements ActionCommand {
     private static final Logger logger = Logger.getLogger(DeleteSpecialityCommand.class);
+
     @Override
     public String execute(HttpServletRequest request) throws SQLException, ClassNotFoundException {
         String page;
@@ -18,8 +19,8 @@ public class DeleteSpecialityCommand implements ActionCommand {
         } catch (LogicException e) {
             logger.error(e);
         }
-        page=PATH_PAGE_SPECIALITY;
-        request.setAttribute(PARAM_NAME_REDIRECT,PARAM_NAME_TRUE);
+        page = PATH_PAGE_SPECIALITY;
+        request.setAttribute(PARAM_NAME_REDIRECT, PARAM_NAME_TRUE);
         request.setAttribute(PARAM_NAME_REDIRECT_URL, PATH_REDIRECT_RESULT_SPECIALITY);
         return page;
     }

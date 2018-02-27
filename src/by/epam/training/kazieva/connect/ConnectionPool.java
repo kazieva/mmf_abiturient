@@ -61,15 +61,15 @@ public class ConnectionPool {
 
     public WrapperConnection getConnection() throws Exception {
         WrapperConnection connection = null;
-            if (instance != null) {
-                try {
-                    connection = availableConnections.take();
-                } catch (InterruptedException e) {
-                    logger.error(e);
-                }
-            } else {
-                throw new Exception("The instance of connection pool is null");
+        if (instance != null) {
+            try {
+                connection = availableConnections.take();
+            } catch (InterruptedException e) {
+                logger.error(e);
             }
+        } else {
+            throw new Exception("The instance of connection pool is null");
+        }
         return connection;
     }
 

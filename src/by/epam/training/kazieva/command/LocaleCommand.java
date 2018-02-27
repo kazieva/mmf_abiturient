@@ -16,8 +16,8 @@ public class LocaleCommand implements ActionCommand {
         } else {
             request.getSession().setAttribute(PARAM_NAME_LOCALE, "en-En");
         }
-        String page=request.getParameter(PARAM_NAME_OLD_COMMAND);
-        request.setAttribute(PARAM_NAME_REDIRECT,PARAM_NAME_TRUE);
+        String page = request.getParameter(PARAM_NAME_OLD_COMMAND);
+        request.setAttribute(PARAM_NAME_REDIRECT, PARAM_NAME_TRUE);
         request.setAttribute(PARAM_NAME_REDIRECT_URL, page);
         return page;
     }

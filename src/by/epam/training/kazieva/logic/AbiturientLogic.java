@@ -5,12 +5,14 @@ import by.epam.training.kazieva.entity.Abiturient;
 import by.epam.training.kazieva.exception.DAOException;
 import by.epam.training.kazieva.exception.LogicException;
 import org.apache.log4j.Logger;
+
 import java.util.List;
 
-public class AbiturientLogic{
+public class AbiturientLogic {
 
     private static final Logger logger = Logger.getLogger(AbiturientLogic.class);
-    public static List <Abiturient> findAllAbiturient() throws LogicException {
+
+    public static List<Abiturient> findAllAbiturient() throws LogicException {
         AbiturientDAO abiturientDAO = new AbiturientDAO();
         List<Abiturient> resultAbiturientsList;
         try {
@@ -21,6 +23,7 @@ public class AbiturientLogic{
         }
         return resultAbiturientsList;
     }
+
     public static void addAbiturient(Abiturient abiturient) throws LogicException {
         AbiturientDAO abiturientDAO = new AbiturientDAO();
         try {
@@ -30,7 +33,8 @@ public class AbiturientLogic{
             throw new LogicException("Error add abiturient", e);
         }
     }
-    public  static void  deleteAbiturient(String passport_series, int passport_id) throws LogicException {
+
+    public static void deleteAbiturient(String passport_series, int passport_id) throws LogicException {
         AbiturientDAO abiturientDAO = new AbiturientDAO();
         try {
             abiturientDAO.deleteAbiturient(passport_series, passport_id);
@@ -40,17 +44,19 @@ public class AbiturientLogic{
         }
 
     }
-    public  static Abiturient getAfituruent(String passport_series, int passport_id) throws LogicException {
+
+    public static Abiturient getAfituruent(String passport_series, int passport_id) throws LogicException {
         AbiturientDAO abiturientDAO = new AbiturientDAO();
-        Abiturient abiturient=null;
+        Abiturient abiturient = null;
         try {
-            abiturient = abiturientDAO.getAbiturient(passport_series,  passport_id);
+            abiturient = abiturientDAO.getAbiturient(passport_series, passport_id);
         } catch (DAOException e) {
             logger.error(e);
             throw new LogicException("Error get abiturient", e);
         }
         return abiturient;
     }
+
     public static void updateAbiturient(Abiturient abiturient, String old_passport_series, int old_passport_id) throws LogicException {
         AbiturientDAO abiturientDAO = new AbiturientDAO();
         try {
